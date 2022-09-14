@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/assure.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/Util/BinUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/Util/ChannelListingUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/Util/ChannelUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/Util/ClientUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/Util/OrderUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/Util/ProductUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/AppRestControllerAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/BinController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/ChannelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/ChannelListingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/ClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/BinDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/BinSkuDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/ChannelDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/ChannelListingDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/ClientDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/InventoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/OrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/OrderItemDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/ProductDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/BinDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ChannelDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ChannelListingDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ClientDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/DtoHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/InventoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/OrderDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ProductDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/data/BinData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/data/BinSkuData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/data/ChannelListingData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/data/ClientData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/data/MessageData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/data/ProductData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/enums/ClientType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/enums/InvoiceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/enums/OrderStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/BinSkuForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/BinSkuUpdateForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/ChannelForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/ChannelListingForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/ChannelListingUploadForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/ClientForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/OrderForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/OrderItemForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/ProductForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/form/ProductUpdateForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/AbstractPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/BinPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/BinSkuPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/ChannelListingPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/ChannelPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/ClientPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/InventoryPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/OrderItemPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/OrderPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/pojo/ProductPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ApiException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/BinService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ChannelListingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ChannelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ClientService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/InventoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/OrderItemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/spring/ControllerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/spring/CustomPhysicalNamingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/spring/DbConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/spring/SpringConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/spring/WebInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/channel.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/controller/AppRestControllerAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/model/data/MessageData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/service/ApiException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/spring/ControllerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/spring/SpringConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/spring/WebInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EQhFZPaJBfgtxb5Bekqr8LfYli" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/anurag/Downloads/toyassure/assure/src/main/java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assure/src/main/java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.increff.model.Data" />
+      <recent name="com.increff.service" />
+      <recent name="com.increff.controller" />
+      <recent name="com.increff.spring" />
+      <recent name="model" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="toyassure [jetty:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="jetty:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="" />
+      <created>1662533616067</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662533616067</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
