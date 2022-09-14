@@ -29,12 +29,16 @@ public class OrderDto {
     @Autowired
     private OrderItemService orderItemService;
 
+    @Autowired
+    private ChannelService channelService;
+
     @Transactional(rollbackOn = ApiException.class)
     public void add(OrderForm orderForm) throws ApiException {
-        //todo:: validate order form
+        validate(orderForm);
         long clientId=clientService.getByName(orderForm.getClientName(), ClientType.CLIENT).getId();
         long customerId=clientService.getByName(orderForm.getCustomerName(),ClientType.CUSTOMER).getId();
-        OrderPojo orderPojo=convertToOrderPOJO(orderForm,clientId,customerId); // TODO :: set internal channelid
+        long channelId=channelService.getByName("INTERNAL").getId();
+        OrderPojo orderPojo=convertToOrderPOJO(orderForm,clientId,customerId,channelId);
         orderService.add(orderPojo);
         List<OrderItemPojo> orderItemPojoList=getOrderItemPojo(orderForm,orderPojo,clientId);
         orderItemService.add(orderItemPojoList);

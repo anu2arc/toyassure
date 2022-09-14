@@ -3,7 +3,6 @@ package com.increff.dto;
 import com.increff.model.data.*;
 import com.increff.model.enums.ClientType;
 import com.increff.model.enums.InvoiceType;
-import com.increff.model.enums.OrderStatus;
 import com.increff.model.form.*;
 import com.increff.pojo.*;
 import org.springframework.stereotype.Repository;
@@ -123,13 +122,13 @@ public class DtoHelper {
         channelListingData.setGlobalSkuId(channelListingPojo.getGlobalSkuId());
         return channelListingData;
     }
-    public static OrderPojo convertToOrderPOJO(OrderForm orderForm, long clientId, long customerId){
+    public static OrderPojo convertToOrderPOJO(OrderForm orderForm, long clientId, long customerId, long channelId){
         OrderPojo orderPojo=new OrderPojo();
         orderPojo.setClientId(clientId);
         orderPojo.setCustomerId(customerId);
         orderPojo.setChannelOrderId(orderPojo.getChannelOrderId());
         orderPojo.setStatus(CREATED);
-        orderPojo.setChannelId(0L);
+        orderPojo.setChannelId(channelId);
         return orderPojo;
     }
 
