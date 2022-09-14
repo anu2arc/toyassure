@@ -1,6 +1,7 @@
 package com.increff.dto;
 
 import com.increff.model.data.ChannelListingData;
+import com.increff.model.enums.ClientType;
 import com.increff.model.form.ChannelListingForm;
 import com.increff.model.form.ChannelListingUploadForm;
 import com.increff.pojo.ChannelListingPojo;
@@ -31,7 +32,7 @@ public class ChannelListingDto {
 
     public void add(ChannelListingUploadForm channelListingUploadForm) throws ApiException {
         validate(channelListingUploadForm);
-        ClientPojo clientPojo=clientService.getByName(channelListingUploadForm.getClientName());
+        ClientPojo clientPojo=clientService.getByName(channelListingUploadForm.getClientName(), ClientType.CLIENT );
         ChannelPojo channelPojo=channelService.getByName(channelListingUploadForm.getChannelName());
         List<ChannelListingPojo> channelListingPojos=new ArrayList<>();
         StringBuilder error=new StringBuilder();
@@ -44,9 +45,10 @@ public class ChannelListingDto {
                 channelListingPojos.add(convert(channelPojo.getId(),channelListingForm.getChannelSkuId(),clientPojo.getId(),productPojo.getGlobalSkuId()));
             }
         }
+        if(!error.toString().isEmpty())
+            throw new ApiException(error.toString());
         channelListingService.add(channelListingPojos);
     }
-
     public List<ChannelListingData> getAll() {
         return convert(channelListingService.getAll());
     }

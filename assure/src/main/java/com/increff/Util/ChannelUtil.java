@@ -15,7 +15,7 @@ public class ChannelUtil {
         if(Objects.isNull(channelForm.getInvoiceType()) || channelForm.getInvoiceType().trim().equals(""))
             throw new ApiException("Invoice type cannot be empty");
         normalize(channelForm);
-        if(!channelForm.getInvoiceType().equals("SELF") && !channelForm.getInvoiceType().equals("INTERNAL"))
+        if(!channelForm.getInvoiceType().equals("SELF") && !channelForm.getInvoiceType().equals("CHANNEL"))
             throw new ApiException("Invalid invoice type");
     }
     public static void normalize(ChannelForm channelForm){

@@ -1,7 +1,6 @@
 package com.increff.dao;
 
 import com.increff.pojo.BinPojo;
-import com.increff.pojo.BinSkuPojo;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

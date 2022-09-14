@@ -1,6 +1,7 @@
 package com.increff.service;
 
 import com.increff.dao.ClientDao;
+import com.increff.model.enums.ClientType;
 import com.increff.pojo.ClientPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class ClientService {
         checkPair(userPojo);
         clientDao.add(userPojo);
     }
-    @Transactional(rollbackOn = ApiException.class)
+
     public List<ClientPojo> getAll() {
         return clientDao.getAll();
     }
@@ -34,10 +35,15 @@ public class ClientService {
             throw new ApiException("User already exist");
     }
 
-    public ClientPojo getByName(String clientName) throws ApiException {
-        ClientPojo clientPojo= clientDao.getByName(clientName);
+    public ClientPojo getByName(String clientName, ClientType clientType) throws ApiException {
+        ClientPojo clientPojo= clientDao.getByName(clientName,clientType);
         if(clientPojo==null)
-            throw new ApiException("Invalid client name");
+            throw new ApiException("Invalid "+clientType+" name");
         return clientPojo;
+    }
+
+    public void checkClientId(long clientId) throws ApiException {
+        if(clientDao.checkClientId(clientId)==null)
+            throw new ApiException("Invalid clientId");
     }
 }

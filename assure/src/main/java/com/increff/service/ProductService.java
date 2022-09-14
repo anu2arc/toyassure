@@ -51,7 +51,7 @@ public class ProductService {
     public ProductPojo check(String clientSkuId,long clientID) throws ApiException {
         return productDao.check(clientSkuId,clientID);
     }
-    @Transactional
+    @Transactional(rollbackOn = ApiException.class)
     public void update(ProductPojo productPojo) throws ApiException {
         ProductPojo presentPojo=productDao.getGlobal(productPojo.getGlobalSkuId());
         if(presentPojo==null)

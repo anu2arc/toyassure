@@ -34,7 +34,7 @@ public class BinController {
 
     @ApiOperation("Upload bin wise inventory")
     @RequestMapping(value = "/Upload/{clientId}",method = RequestMethod.POST)
-    public void add(@RequestBody List<BinSkuForm> binSkuForms,@RequestParam long clientId) throws ApiException {
+    public void add(@RequestParam long clientId,@RequestBody List<BinSkuForm> binSkuForms) throws ApiException {
         binDto.add(binSkuForms,clientId);
     }
 

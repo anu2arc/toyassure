@@ -41,7 +41,7 @@ public class BinService {
     public void check(long binId) throws ApiException {
         BinPojo binPojo=binDao.check(binId);
         if(binPojo==null)
-            throw new ApiException("Invalid BinId");
+            throw new ApiException("Invalid BinId:"+binId);
     }
     public List<BinSkuPojo> getAllSku() {
         return binSkuDao.getAllSku();

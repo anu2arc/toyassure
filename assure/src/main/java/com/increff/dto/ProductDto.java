@@ -32,7 +32,7 @@ public class ProductDto {
     }
 
     public void add(long clientId, List<ProductForm> productFormList) throws ApiException {
-        clientService.get(clientId);
+        clientService.checkClientId(clientId);
         List<ProductPojo> productPojoList=new ArrayList<>();
         StringBuilder error=new StringBuilder();
         for(ProductForm productForm:productFormList){

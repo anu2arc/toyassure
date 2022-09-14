@@ -13,7 +13,7 @@ public class ChannelService {
     @Autowired
     private ChannelDao channelDao;
 
-    @Transactional
+    @Transactional(rollbackOn = ApiException.class)
     public void add(ChannelPojo channelPojo) throws ApiException {
         ChannelPojo pojo= channelDao.check(channelPojo.getName());
         if(pojo!=null) {

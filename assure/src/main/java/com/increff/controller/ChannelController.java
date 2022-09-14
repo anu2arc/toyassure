@@ -23,4 +23,5 @@ public class ChannelController {
     public void add(@RequestBody ChannelForm channelForm) throws ApiException {
         channelDto.add(channelForm);
     }
+    //todo :: add fetch all api;
 }

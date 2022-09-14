@@ -6,11 +6,12 @@ import com.increff.model.enums.InvoiceType;
 import com.increff.model.enums.OrderStatus;
 import com.increff.model.form.*;
 import com.increff.pojo.*;
-import org.apache.xpath.operations.Or;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.increff.model.enums.OrderStatus.*;
 
 @Repository
 public class DtoHelper {
@@ -78,6 +79,7 @@ public class DtoHelper {
     }
     public static BinSkuData convert(BinSkuPojo binSkuPojo){
         BinSkuData binSkuData=new BinSkuData();
+        binSkuData.setId(binSkuPojo.getId());
         binSkuData.setBinId(binSkuPojo.getBinId());
         binSkuData.setGlobalSkuId(binSkuPojo.getGlobalSkuId());
         binSkuData.setQuantity(binSkuPojo.getQuantity());
@@ -121,12 +123,12 @@ public class DtoHelper {
         channelListingData.setGlobalSkuId(channelListingPojo.getGlobalSkuId());
         return channelListingData;
     }
-    public static OrderPojo convertToOrderPOJO(OrderForm orderForm){
+    public static OrderPojo convertToOrderPOJO(OrderForm orderForm, long clientId, long customerId){
         OrderPojo orderPojo=new OrderPojo();
-        orderPojo.setClientId(orderForm.getClientId());
-        orderPojo.setCustomerId(orderForm.getCustomerId());
+        orderPojo.setClientId(clientId);
+        orderPojo.setCustomerId(customerId);
         orderPojo.setChannelOrderId(orderPojo.getChannelOrderId());
-        orderPojo.setStatus(OrderStatus.CREATED);
+        orderPojo.setStatus(CREATED);
         orderPojo.setChannelId(0L);
         return orderPojo;
     }

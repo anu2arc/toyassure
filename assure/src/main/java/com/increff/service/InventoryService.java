@@ -1,7 +1,6 @@
 package com.increff.service;
 
 import com.increff.dao.InventoryDao;
-import com.increff.pojo.BinSkuPojo;
 import com.increff.pojo.InventoryPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,13 +21,6 @@ public class InventoryService {
             } catch (ApiException exception) {
                 inventoryDao.add(inventoryPojo);
             }
-
-//            InventoryPojo inventoryPojo1=inventoryDao.get(inventoryPojo.getGlobalSkuId());
-//            if(inventoryPojo1==null)
-//                inventoryDao.add(inventoryPojo);
-//            else {
-//                inventoryPojo1.setAvailableQuantity(inventoryPojo1.getAvailableQuantity()+inventoryPojo.getAvailableQuantity());
-//            }
         }
     }
     public InventoryPojo check(long globalSkuId) throws ApiException {

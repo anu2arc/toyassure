@@ -7,10 +7,7 @@ import com.increff.model.form.BinSkuUpdateForm;
 import com.increff.pojo.BinPojo;
 import com.increff.pojo.BinSkuPojo;
 import com.increff.pojo.ProductPojo;
-import com.increff.service.ApiException;
-import com.increff.service.BinService;
-import com.increff.service.InventoryService;
-import com.increff.service.ProductService;
+import com.increff.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +27,8 @@ public class BinDto {
     private InventoryService inventoryService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ClientService clientService;
     public List<BinData> getAll() {
         List<BinData> binDataList=new ArrayList<>();
         List<BinPojo> binPojoList=binService.getAll();
@@ -42,16 +41,17 @@ public class BinDto {
         binService.create(noOfBin);
     }
 
-    @Transactional
+    @Transactional(rollbackOn = ApiException.class)
     public void add(List<BinSkuForm> binSkuForms,long clientId) throws ApiException {
         StringBuilder error=new StringBuilder();
         List<BinSkuPojo> binSkuPojoList=new ArrayList<>();
+        clientService.checkClientId(clientId);
         for(BinSkuForm binSkuForm:binSkuForms){
             try{
                 validate(binSkuForm);
                 ProductPojo productPojo=productService.check(binSkuForm.getClientSkuId(),clientId);
                 if(productPojo==null)
-                    throw new ApiException("Product doesn't exist for given ClientSkuId and clientId");
+                    throw new ApiException("Product doesn't exist for given ClientSkuId");
                 binService.check(binSkuForm.getBinId());
                 binSkuPojoList.add(convert(binSkuForm, productPojo.getGlobalSkuId()));
             }
@@ -73,7 +73,7 @@ public class BinDto {
         }
         return binSkuDataList;
     }
-    @Transactional
+    @Transactional(rollbackOn = ApiException.class)
     public void update(long id, BinSkuUpdateForm binSkuUpdateForm) throws ApiException {
         BinSkuPojo binSkuPojo=binService.get(id);
         inventoryService.update(binSkuPojo.getGlobalSkuId(),binSkuPojo.getQuantity(),binSkuUpdateForm.getQuantity());

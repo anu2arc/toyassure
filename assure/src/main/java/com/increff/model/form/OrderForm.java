@@ -8,8 +8,8 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderForm {
-    private Long clientId;
-    private Long channelOrderId;
-    private Long customerId;
+    private String clientName;
+    private String channelOrderId;
+    private String customerName;
     private List<OrderItemForm> orderItems;
 }

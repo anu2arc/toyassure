@@ -1,8 +1,6 @@
 package com.increff.dao;
 
-import com.increff.pojo.BinSkuPojo;
 import com.increff.pojo.ChannelListingPojo;
-import com.increff.pojo.ChannelPojo;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
