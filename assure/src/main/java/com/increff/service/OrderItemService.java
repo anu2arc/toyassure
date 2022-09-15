@@ -19,4 +19,16 @@ public class OrderItemService {
             orderItemDao.insert(orderItemPojo);
         }
     }
+
+    public List<OrderItemPojo> getItemsByOrderId(long orderId) {
+        return orderItemDao.getItemsByOrderId(orderId);
+    }
+
+    @Transactional
+    public void allocateQuantity(Long id, long newAllocatedQuantity) throws ApiException {
+        OrderItemPojo orderItemPojo=orderItemDao.get(id);
+        if(orderItemPojo==null)
+            throw new ApiException("Invalid id for orderItem");
+        orderItemPojo.setAllocatedQuantity(orderItemPojo.getAllocatedQuantity()+newAllocatedQuantity);
+    }
 }

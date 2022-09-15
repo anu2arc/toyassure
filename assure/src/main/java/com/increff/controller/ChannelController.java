@@ -1,7 +1,7 @@
 package com.increff.controller;
 
 import com.increff.dto.ChannelDto;
-import com.increff.model.form.ChannelForm;
+import com.increff.model.forms.ChannelForm;
 import com.increff.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

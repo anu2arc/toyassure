@@ -2,7 +2,7 @@ package com.increff.controller;
 
 import com.increff.dto.ChannelListingDto;
 import com.increff.model.data.ChannelListingData;
-import com.increff.model.form.ChannelListingUploadForm;
+import com.increff.model.forms.ChannelListingUploadForm;
 import com.increff.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

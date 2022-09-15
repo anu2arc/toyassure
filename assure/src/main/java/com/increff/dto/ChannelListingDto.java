@@ -2,8 +2,8 @@ package com.increff.dto;
 
 import com.increff.model.data.ChannelListingData;
 import com.increff.model.enums.ClientType;
-import com.increff.model.form.ChannelListingForm;
-import com.increff.model.form.ChannelListingUploadForm;
+import com.increff.model.forms.ChannelListingForm;
+import com.increff.model.forms.ChannelListingUploadForm;
 import com.increff.pojo.ChannelListingPojo;
 import com.increff.pojo.ChannelPojo;
 import com.increff.pojo.ClientPojo;

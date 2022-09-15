@@ -1,7 +1,7 @@
 package com.increff.Util;
 
-import com.increff.model.form.ProductForm;
-import com.increff.model.form.ProductUpdateForm;
+import com.increff.model.forms.ProductForm;
+import com.increff.model.forms.ProductUpdateForm;
 import com.increff.service.ApiException;
 import org.springframework.stereotype.Repository;
 

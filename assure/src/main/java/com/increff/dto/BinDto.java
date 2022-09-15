@@ -2,8 +2,9 @@ package com.increff.dto;
 
 import com.increff.model.data.BinData;
 import com.increff.model.data.BinSkuData;
-import com.increff.model.form.BinSkuForm;
-import com.increff.model.form.BinSkuUpdateForm;
+import com.increff.model.enums.ClientType;
+import com.increff.model.forms.BinSkuForm;
+import com.increff.model.forms.BinSkuUpdateForm;
 import com.increff.pojo.BinPojo;
 import com.increff.pojo.BinSkuPojo;
 import com.increff.pojo.ProductPojo;
@@ -45,7 +46,7 @@ public class BinDto {
     public void add(List<BinSkuForm> binSkuForms,long clientId) throws ApiException {
         StringBuilder error=new StringBuilder();
         List<BinSkuPojo> binSkuPojoList=new ArrayList<>();
-        clientService.checkClientId(clientId);
+        clientService.checkIdAndType(clientId, ClientType.CLIENT);
         for(BinSkuForm binSkuForm:binSkuForms){
             try{
                 validate(binSkuForm);
@@ -62,6 +63,7 @@ public class BinDto {
         if(!error.toString().isEmpty())
             throw new ApiException(error.toString());
         binService.add(binSkuPojoList);
+        //todo change convert to convert type
         inventoryService.add(convertx(binSkuPojoList));
     }
 

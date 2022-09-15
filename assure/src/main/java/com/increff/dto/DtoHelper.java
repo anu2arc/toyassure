@@ -1,9 +1,12 @@
 package com.increff.dto;
 
+import com.increff.form.ChannelOrderForm;
+import com.increff.form.ChannelOrderUploadForm;
 import com.increff.model.data.*;
 import com.increff.model.enums.ClientType;
 import com.increff.model.enums.InvoiceType;
-import com.increff.model.form.*;
+import com.increff.model.enums.OrderStatus;
+import com.increff.model.forms.*;
 import com.increff.pojo.*;
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +40,7 @@ public class DtoHelper {
         productData.setClientId(productPojo.getClientId());
         return productData;
     }
-    public static ProductPojo convert(ProductForm productForm,long userID){
+    public static ProductPojo convert(ProductForm productForm, long userID){
         ProductPojo productPojo=new ProductPojo();
         productPojo.setClientSkuId(productForm.getClientSkuId());
         productPojo.setClientId(userID);
@@ -69,7 +72,7 @@ public class DtoHelper {
         }
         return inventoryPojoList;
     }
-    public static BinSkuPojo convert(BinSkuForm binSkuForm,long globalSkuId){
+    public static BinSkuPojo convert(BinSkuForm binSkuForm, long globalSkuId){
         BinSkuPojo binSkuPojo=new BinSkuPojo();
         binSkuPojo.setBinId(binSkuForm.getBinId());
         binSkuPojo.setGlobalSkuId(globalSkuId);
@@ -140,6 +143,26 @@ public class DtoHelper {
         orderItemPojo.setAllocatedQuantity(0L);
         orderItemPojo.setFulfilledQuantity(0L);
         orderItemPojo.setSellingPricePerUnit(orderItemForm.getSellingPricePerUnit());
+        return orderItemPojo;
+    }
+
+    public static OrderPojo convert(ChannelOrderUploadForm orderUploadForm, long channelId){
+        OrderPojo orderPojo=new OrderPojo();
+        orderPojo.setClientId(orderUploadForm.getClientId());
+        orderPojo.setCustomerId(orderUploadForm.getCustomerId());
+        orderPojo.setChannelId(channelId);
+        orderPojo.setChannelOrderId(orderUploadForm.getChannelOrderId());
+        orderPojo.setStatus(OrderStatus.CREATED);
+        return orderPojo;
+    }
+    public static OrderItemPojo convert(long orderId, ChannelOrderForm orderForm, long globalSkuID) {
+        OrderItemPojo orderItemPojo=new OrderItemPojo();
+        orderItemPojo.setOrderId(orderId);
+        orderItemPojo.setGlobalSkuId(globalSkuID);
+        orderItemPojo.setOrderedQuantity(orderForm.getQuantity());
+        orderItemPojo.setAllocatedQuantity(0L);
+        orderItemPojo.setFulfilledQuantity(0L);
+        orderItemPojo.setSellingPricePerUnit(orderForm.getSellingPrice());
         return orderItemPojo;
     }
 }

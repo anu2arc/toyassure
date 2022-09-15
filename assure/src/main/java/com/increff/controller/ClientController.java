@@ -2,7 +2,7 @@ package com.increff.controller;
 
 import com.increff.dto.ClientDto;
 import com.increff.model.data.ClientData;
-import com.increff.model.form.ClientForm;
+import com.increff.model.forms.ClientForm;
 import com.increff.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @Api
 @RestController

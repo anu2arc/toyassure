@@ -1,7 +1,7 @@
 package com.increff.Util;
 
-import com.increff.model.form.BinSkuForm;
-import com.increff.model.form.BinSkuUpdateForm;
+import com.increff.model.forms.BinSkuForm;
+import com.increff.model.forms.BinSkuUpdateForm;
 import com.increff.service.ApiException;
 import org.springframework.stereotype.Repository;
 

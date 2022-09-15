@@ -1,8 +1,9 @@
 package com.increff.dto;
 
 import com.increff.model.data.ProductData;
-import com.increff.model.form.ProductForm;
-import com.increff.model.form.ProductUpdateForm;
+import com.increff.model.enums.ClientType;
+import com.increff.model.forms.ProductForm;
+import com.increff.model.forms.ProductUpdateForm;
 import com.increff.pojo.ProductPojo;
 import com.increff.service.ApiException;
 import com.increff.service.ClientService;
@@ -23,6 +24,7 @@ public class ProductDto {
     @Autowired
     private ClientService clientService;
     public List<ProductData> getAll() {
+        //todo move to convert dto helper
         List<ProductPojo> productPojoList=productService.getAll();
         List<ProductData> productDataList=new ArrayList<>();
         for(ProductPojo productPojo:productPojoList){
@@ -32,9 +34,10 @@ public class ProductDto {
     }
 
     public void add(long clientId, List<ProductForm> productFormList) throws ApiException {
-        clientService.checkClientId(clientId);
+        clientService.checkIdAndType(clientId, ClientType.CLIENT);
         List<ProductPojo> productPojoList=new ArrayList<>();
         StringBuilder error=new StringBuilder();
+        //todo do dubplicate validation here only with new function
         for(ProductForm productForm:productFormList){
             try{
                 validate(productForm);
@@ -53,4 +56,5 @@ public class ProductDto {
         validate(productUpdateForm);
         productService.update(convert(productUpdateForm,globalId));
     }
+
 }

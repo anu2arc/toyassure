@@ -34,6 +34,8 @@ public class ProductDao {
         query.setParameter("clientId",clientId);
         return query.getResultList().stream().findFirst().orElse(null);
     }
+
+    //todo remove
     public ProductPojo check(String clientSkuId){
         TypedQuery<ProductPojo> query=getQuery(SELECT_BY_CLIENT_SKU_ID);
         query.setParameter("clientSkuId",clientSkuId);

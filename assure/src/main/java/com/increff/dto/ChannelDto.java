@@ -1,6 +1,6 @@
 package com.increff.dto;
 
-import com.increff.model.form.ChannelForm;
+import com.increff.model.forms.ChannelForm;
 import com.increff.service.ApiException;
 import com.increff.service.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;

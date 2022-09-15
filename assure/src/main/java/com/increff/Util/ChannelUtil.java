@@ -1,6 +1,6 @@
 package com.increff.Util;
 
-import com.increff.model.form.ChannelForm;
+import com.increff.model.forms.ChannelForm;
 import com.increff.service.ApiException;
 import org.springframework.stereotype.Repository;
 

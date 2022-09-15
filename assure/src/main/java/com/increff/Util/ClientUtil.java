@@ -1,6 +1,6 @@
 package com.increff.Util;
 
-import com.increff.model.form.ClientForm;
+import com.increff.model.forms.ClientForm;
 import com.increff.service.ApiException;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +17,7 @@ public class ClientUtil {
         if(Objects.isNull(clientForm.getClientType()))
             throw new ApiException("Usertype cannot be empty");
         normalize(clientForm);
-        if(!clientForm.getClientType().toString().equals("CLIENT") && !clientForm.getClientType().toString().equals("CUSTOMER"))
+        if(!clientForm.getClientType().equals("CLIENT") && !clientForm.getClientType().equals("CUSTOMER"))
             throw new ApiException("Invalid user type");
     }
     private static void normalize(ClientForm clientForm){

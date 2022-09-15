@@ -26,6 +26,7 @@ public class ProductService {
         StringBuilder error=new StringBuilder();
         for(ProductPojo productPojo:productPojoList){
             try {
+                //todo :: move this check to dto
                 if (skuIdSet.contains(productPojo.getClientSkuId() + productPojo.getClientId()))
                     throw new ApiException("Duplicate entry for product :"+productPojo.getClientSkuId()+"\n");
                 if(check(productPojo.getClientSkuId(),productPojo.getClientId())!=null)
@@ -53,12 +54,13 @@ public class ProductService {
     }
     @Transactional(rollbackOn = ApiException.class)
     public void update(ProductPojo productPojo) throws ApiException {
+        //todo change names
         ProductPojo presentPojo=productDao.getGlobal(productPojo.getGlobalSkuId());
         if(presentPojo==null)
             throw new ApiException("Invalid Global Sku Id");
-        set(productPojo,presentPojo);
+        setProductPojo(productPojo,presentPojo);
     }
-    private void set(ProductPojo productPojo,ProductPojo presentPojo){
+    private void setProductPojo(ProductPojo productPojo, ProductPojo presentPojo){
         presentPojo.setDescription(productPojo.getDescription());
         presentPojo.setName(productPojo.getName());
         presentPojo.setMrp(productPojo.getMrp());

@@ -1,7 +1,7 @@
 package com.increff.Util;
 
-import com.increff.model.form.ChannelListingForm;
-import com.increff.model.form.ChannelListingUploadForm;
+import com.increff.model.forms.ChannelListingForm;
+import com.increff.model.forms.ChannelListingUploadForm;
 import com.increff.service.ApiException;
 import org.springframework.stereotype.Repository;
 

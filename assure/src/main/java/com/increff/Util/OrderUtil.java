@@ -1,7 +1,9 @@
 package com.increff.Util;
 
-import com.increff.model.form.OrderForm;
-import com.increff.model.form.OrderItemForm;
+import com.increff.form.ChannelOrderForm;
+import com.increff.form.ChannelOrderUploadForm;
+import com.increff.model.forms.OrderForm;
+import com.increff.model.forms.OrderItemForm;
 import com.increff.service.ApiException;
 import org.springframework.stereotype.Repository;
 
@@ -33,6 +35,8 @@ public class OrderUtil {
             throw new ApiException("Customer name cannot be null");
         if(Objects.isNull(orderForm.getChannelOrderId())||orderForm.getChannelOrderId().trim().equals(""))
             throw new ApiException("Channel order id cannot be null");
+        if(orderForm.getOrderItems().size()==0)
+            throw new ApiException("Their must be at least one order item");
         normalize(orderForm);
     }
     public static void normalize(OrderItemForm orderItemForm){
@@ -44,5 +48,39 @@ public class OrderUtil {
         orderForm.setClientName(orderForm.getClientName().trim().toLowerCase());
         orderForm.setChannelOrderId(orderForm.getChannelOrderId().trim().toLowerCase());
         orderForm.setCustomerName(orderForm.getCustomerName().trim().toLowerCase());
+    }
+
+
+//    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("0.00");
+    public static void validate(ChannelOrderUploadForm orderUploadForm) throws ApiException {
+        if(Objects.isNull(orderUploadForm.getChannelName()) || orderUploadForm.getChannelName().trim().equals(""))
+            throw new ApiException("Channel name cannot be empty");
+        if(Objects.isNull(orderUploadForm.getChannelOrderId()) || orderUploadForm.getChannelOrderId().trim().equals(""))
+            throw new ApiException("Channel order id cannot be empty");
+        if(orderUploadForm.getItems().size()==0)
+            throw new ApiException("No order item found");
+        normalize(orderUploadForm);
+    }
+    public static void validate(ChannelOrderForm orderForm) throws ApiException {
+        if(Objects.isNull(orderForm.getChannelSkuId()) || orderForm.getChannelSkuId().trim().equals(""))
+            throw new ApiException("Channel sku id cannot be empty");
+        if(orderForm.getQuantity()<0)
+            throw new ApiException("Quantity cannot be negative");
+        if(orderForm.getQuantity()==0)
+            throw new ApiException("Quantity cannot be zero");
+        if(orderForm.getSellingPrice()<0)
+            throw new ApiException("selling price cannot be negative");
+        if(orderForm.getSellingPrice()==0)
+            throw new ApiException("selling price cannot be zero");
+
+    }
+
+    public static void normalize(ChannelOrderForm orderForm){
+        orderForm.setChannelSkuId(orderForm.getChannelSkuId().trim().toLowerCase());
+        orderForm.setSellingPrice(Double.valueOf(DECIMAL_FORMAT.format(orderForm.getSellingPrice())));
+    }
+    public static void normalize(ChannelOrderUploadForm orderUploadForm) {
+        orderUploadForm.setChannelName(orderUploadForm.getChannelName().trim().toLowerCase());
+        orderUploadForm.setChannelOrderId(orderUploadForm.getChannelOrderId().trim().toLowerCase());
     }
 }

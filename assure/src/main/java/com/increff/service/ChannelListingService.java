@@ -23,4 +23,11 @@ public class ChannelListingService {
     public List<ChannelListingPojo> getAll() {
         return channelListingDao.getAll();
     }
+
+    public long getGlobalSkuId(String channelSkuId, Long clientId, long channelId) throws ApiException {
+        ChannelListingPojo channelListingPojo=channelListingDao.get(channelSkuId,clientId,channelId);
+        if(channelListingPojo==null)
+            throw new ApiException("Invalid channelSkuId");
+        return channelListingPojo.getGlobalSkuId();
+    }
 }

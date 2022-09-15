@@ -3,8 +3,8 @@ package com.increff.controller;
 import com.increff.dto.BinDto;
 import com.increff.model.data.BinData;
 import com.increff.model.data.BinSkuData;
-import com.increff.model.form.BinSkuForm;
-import com.increff.model.form.BinSkuUpdateForm;
+import com.increff.model.forms.BinSkuForm;
+import com.increff.model.forms.BinSkuUpdateForm;
 import com.increff.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,19 +33,19 @@ public class BinController {
     }
 
     @ApiOperation("Upload bin wise inventory")
-    @RequestMapping(value = "/Upload/{clientId}",method = RequestMethod.POST)
+    @RequestMapping(value = "/upload/{clientId}",method = RequestMethod.POST)
     public void add(@RequestParam long clientId,@RequestBody List<BinSkuForm> binSkuForms) throws ApiException {
         binDto.add(binSkuForms,clientId);
     }
 
     @ApiOperation("Fetch All bin with Sku's")
-    @RequestMapping(value = "/Sku",method = RequestMethod.GET)
+    @RequestMapping(value = "/sku",method = RequestMethod.GET)
     public List<BinSkuData> getBinSku(){
         return binDto.getAllSku();
     }
 
     @ApiOperation("Edit by id")
-    @RequestMapping(value = "/Sku/{id}",method = RequestMethod.PATCH)
+    @RequestMapping(value = "/sku/{id}",method = RequestMethod.PUT)
     public void update(@RequestParam long id, @RequestBody BinSkuUpdateForm binSkuUpdateForm) throws ApiException {
         binDto.update(id,binSkuUpdateForm);
     }

@@ -31,8 +31,15 @@ public class InventoryService {
     }
 
     @Transactional
-    public void update(Long globalSkuId, Long quantity, long quantity1) throws ApiException {
+    public void allocateInventory(Long globalSkuId, Long allocatedQuantity) throws ApiException {
         InventoryPojo inventoryPojo=check(globalSkuId);
-        inventoryPojo.setAvailableQuantity(inventoryPojo.getAvailableQuantity()-quantity+quantity1);
+        inventoryPojo.setAvailableQuantity(inventoryPojo.getAvailableQuantity()-allocatedQuantity);
+        inventoryPojo.setAllocatedQuantity(inventoryPojo.getAllocatedQuantity()+allocatedQuantity);
     }
+    @Transactional
+    public void update(Long globalSkuId, Long oldQuantity, Long newQuantity) throws ApiException {
+        InventoryPojo inventoryPojo=check(globalSkuId);
+        inventoryPojo.setAvailableQuantity(inventoryPojo.getAvailableQuantity()-oldQuantity+newQuantity);
+    }
+
 }

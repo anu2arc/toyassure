@@ -15,6 +15,7 @@ public class BinSkuDao {
     private static final String SELECT_BY_GID_AND_BID="select bp from BinSkuPojo bp where binId=:binId and globalSkuId=:globalSkuId";
     private static final String SELECT_ALL="select bp from BinSkuPojo bp";
     private static final String SELECT_BY_ID="select bp from BinSkuPojo bp where id=:id";
+    private static final String SELECT_BY_GLOBALSKUID="select bp from BinSkuPojo bp where globalSkuId=:globalSkuId and quantity>0";
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -43,5 +44,11 @@ public class BinSkuDao {
         TypedQuery<BinSkuPojo> query= getQuery(SELECT_BY_ID);
         query.setParameter("id",id);
         return query.getResultList().stream().findFirst().orElse(null);
+    }
+
+    public List<BinSkuPojo> getAllBinWithAvailableProduct(Long globalSkuId) {
+        TypedQuery<BinSkuPojo> query= getQuery(SELECT_BY_GLOBALSKUID);
+        query.setParameter("globalSkuId",globalSkuId);
+        return query.getResultList();
     }
 }

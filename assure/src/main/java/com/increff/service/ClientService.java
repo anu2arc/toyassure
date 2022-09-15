@@ -42,8 +42,8 @@ public class ClientService {
         return clientPojo;
     }
 
-    public void checkClientId(long clientId) throws ApiException {
-        if(clientDao.checkClientId(clientId)==null)
-            throw new ApiException("Invalid clientId");
+    public void checkIdAndType(long clientId, ClientType type) throws ApiException {
+        if(clientDao.checkIdAndType(clientId,type)==null)
+            throw new ApiException("Invalid "+type+" id");
     }
 }

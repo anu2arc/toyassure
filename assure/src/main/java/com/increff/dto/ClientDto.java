@@ -1,7 +1,7 @@
 package com.increff.dto;
 
 import com.increff.model.data.ClientData;
-import com.increff.model.form.ClientForm;
+import com.increff.model.forms.ClientForm;
 import com.increff.pojo.ClientPojo;
 import com.increff.service.ApiException;
 import com.increff.service.ClientService;
@@ -25,6 +25,7 @@ public class ClientDto {
     public ClientData get(long clientId) throws ApiException {
         return convert(clientService.get(clientId));
     }
+    // todo:: traverse list in convert
     public List<ClientData> getAll() {
         List<ClientPojo> userPojoList= clientService.getAll();;
         List<ClientData> clientData =new ArrayList<>();

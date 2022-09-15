@@ -58,4 +58,17 @@ public class BinService {
             throw new ApiException("Invalid id");
         return binSkuPojo;
     }
+
+    @Transactional
+    public void allocate(Long globalSkuId, long AllocatedQuantity) throws ApiException {
+        List<BinSkuPojo> binSkuPojoList=binSkuDao.getAllBinWithAvailableProduct(globalSkuId);
+        for(BinSkuPojo binSkuPojo:binSkuPojoList){
+            if(AllocatedQuantity==0) break;
+            long quantityToReduce=Math.min(AllocatedQuantity,binSkuPojo.getQuantity());
+            binSkuPojo.setQuantity(binSkuPojo.getQuantity()-quantityToReduce);
+            AllocatedQuantity=AllocatedQuantity-quantityToReduce;
+        }
+        if(AllocatedQuantity!=0)
+            throw new ApiException("inventory missing from bin");
+    }
 }

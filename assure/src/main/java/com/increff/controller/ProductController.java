@@ -2,8 +2,8 @@ package com.increff.controller;
 
 import com.increff.dto.ProductDto;
 import com.increff.model.data.ProductData;
-import com.increff.model.form.ProductForm;
-import com.increff.model.form.ProductUpdateForm;
+import com.increff.model.forms.ProductForm;
+import com.increff.model.forms.ProductUpdateForm;
 import com.increff.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,8 +33,8 @@ public class ProductController {
     }
 
     @ApiOperation(value = "update product detail's")
-    @RequestMapping(value = "/{globalId}",method = RequestMethod.PATCH)
-    public void update(@RequestParam long globalId, @RequestBody ProductUpdateForm productUpdateForm) throws ApiException {
-        productDto.update(globalId,productUpdateForm);
+    @RequestMapping(value = "/{globalSkuId}",method = RequestMethod.PUT)
+    public void update(@RequestParam long globalSkuId, @RequestBody ProductUpdateForm productUpdateForm) throws ApiException {
+        productDto.update(globalSkuId,productUpdateForm);
     }
 }

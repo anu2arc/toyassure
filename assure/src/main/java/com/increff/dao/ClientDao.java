@@ -47,17 +47,18 @@ public class ClientDao {
         query.setParameter("type",userPojo.getClientType());
         return query.getResultList().stream().findFirst().orElse(null);
     }
-
+    //todo:: check for single result and em find
     public ClientPojo get(long id) {
+//        entityManager.find(ClientPojo.class,id);
         TypedQuery<ClientPojo> query=getQuery(SELECT_BY_ID);
         query.setParameter("id",id);
         return query.getResultList().stream().findFirst().orElse(null);
     }
 
-    public ClientPojo checkClientId(long clientId) {
+    public ClientPojo checkIdAndType(long clientId, ClientType type) {
         TypedQuery<ClientPojo> query=getQuery(SELECT_BY_ID_AND_TYPE);
         query.setParameter("id",clientId);
-        query.setParameter("type",ClientType.CLIENT);
+        query.setParameter("type",type);
         return query.getResultList().stream().findFirst().orElse(null);
     }
 }
