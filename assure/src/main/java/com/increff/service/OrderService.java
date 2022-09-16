@@ -22,8 +22,8 @@ public class OrderService {
         return orderPojo;
     }
 
-    public void updateOrderStatus(long orderId) throws ApiException {
+    public void updateOrderStatus(long orderId,OrderStatus orderStatus) throws ApiException {
         OrderPojo orderPojo=getOrder(orderId);
-        orderPojo.setStatus(OrderStatus.ALLOCATED);
+        orderPojo.setStatus(orderStatus);
     }
 }

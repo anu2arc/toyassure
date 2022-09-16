@@ -42,4 +42,10 @@ public class InventoryService {
         inventoryPojo.setAvailableQuantity(inventoryPojo.getAvailableQuantity()-oldQuantity+newQuantity);
     }
 
+    @Transactional
+    public void fulfillOrder(Long globalSkuId, Long orderedQuantity) throws ApiException {
+        InventoryPojo inventoryPojo=check(globalSkuId);
+        inventoryPojo.setAllocatedQuantity(inventoryPojo.getAllocatedQuantity()-orderedQuantity);
+        inventoryPojo.setFulfilledQuantity(inventoryPojo.getFulfilledQuantity()+orderedQuantity);
+    }
 }

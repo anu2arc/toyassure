@@ -31,4 +31,13 @@ public class OrderItemService {
             throw new ApiException("Invalid id for orderItem");
         orderItemPojo.setAllocatedQuantity(orderItemPojo.getAllocatedQuantity()+newAllocatedQuantity);
     }
+
+    @Transactional
+    public void fulfillOrder(long id) {
+        OrderItemPojo orderItemPojo= orderItemDao.get(id);
+        if(orderItemPojo==null)
+            throw new ArrayIndexOutOfBoundsException("Invalid id for orderItem");
+        orderItemPojo.setAllocatedQuantity(0L);
+        orderItemPojo.setFulfilledQuantity(orderItemPojo.getOrderedQuantity());
+    }
 }

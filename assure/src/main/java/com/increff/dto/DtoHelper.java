@@ -17,19 +17,26 @@ import static com.increff.model.enums.OrderStatus.*;
 
 @Repository
 public class DtoHelper {
-    public static ClientData convert(ClientPojo userPojo){
+    public static ClientData convertClientPojoToClientData(ClientPojo userPojo){
         ClientData clientData =new ClientData();
         clientData.setName(userPojo.getName());
         clientData.setType(userPojo.getClientType());
         return clientData;
     }
-    public static ClientPojo convert(ClientForm clientForm){
+    public static List<ClientData> convertClientPojoToClientDataList(List<ClientPojo> userPojoList) {
+        List<ClientData> clientData =new ArrayList<>();
+        for(ClientPojo userPojo:userPojoList) {
+            clientData.add(convertClientPojoToClientData(userPojo));
+        }
+        return clientData;
+    }
+    public static ClientPojo convertClientFormToPojo(ClientForm clientForm){
         ClientPojo userPojo=new ClientPojo();
         userPojo.setClientType(ClientType.valueOf(clientForm.getClientType()));
         userPojo.setName(clientForm.getName());
         return userPojo;
     }
-    public static ProductData convert(ProductPojo productPojo){
+    public static ProductData convertProductPojoToProductData(ProductPojo productPojo){
         ProductData productData=new ProductData();
         productData.setGlobalSkuId(productPojo.getGlobalSkuId());
         productData.setClientSkuId(productPojo.getClientSkuId());
@@ -40,7 +47,14 @@ public class DtoHelper {
         productData.setClientId(productPojo.getClientId());
         return productData;
     }
-    public static ProductPojo convert(ProductForm productForm, long userID){
+    public static List<ProductData> convertProductPojoToProductDataList(List<ProductPojo> productPojoList) {
+        List<ProductData> productDataList=new ArrayList<>();
+        for(ProductPojo productPojo:productPojoList){
+            productDataList.add(convertProductPojoToProductData(productPojo));
+        }
+        return productDataList;
+    }
+    public static ProductPojo convertProductFormToProductPojo(ProductForm productForm, long userID){
         ProductPojo productPojo=new ProductPojo();
         productPojo.setClientSkuId(productForm.getClientSkuId());
         productPojo.setClientId(userID);
@@ -51,7 +65,7 @@ public class DtoHelper {
         return productPojo;
     }
 
-    public static ProductPojo convert(ProductUpdateForm productUpdateForm,long gSkuId){
+    public static ProductPojo convertProductFormToPojo(ProductUpdateForm productUpdateForm,long gSkuId){
         ProductPojo productPojo=new ProductPojo();
         productPojo.setGlobalSkuId(gSkuId);
         productPojo.setName(productUpdateForm.getName());
@@ -60,26 +74,42 @@ public class DtoHelper {
         productPojo.setDescription(productUpdateForm.getDescription());
         return productPojo;
     }
-    public static BinData convert(BinPojo binPojo){
+    public static List<BinData> convertBinPojoToBinDataList(List<BinPojo> binPojoList) {
+        List<BinData> binDataList=new ArrayList<>();
+        for(BinPojo binPojo:binPojoList){
+            binDataList.add(convertBinPojoToBinData(binPojo));
+        }
+        return binDataList;
+    }
+
+    public static BinData convertBinPojoToBinData(BinPojo binPojo) {
         BinData binData=new BinData();
         binData.setBinId(binPojo.getBinId());
         return binData;
     }
-    public static List<InventoryPojo> convertx(List<BinSkuPojo> binSkuPojoList){
+    public static List<InventoryPojo> convertBinPojoListToInventoryPojo(List<BinSkuPojo> binSkuPojoList){
         List<InventoryPojo> inventoryPojoList=new ArrayList<>();
         for(BinSkuPojo binSkuPojo:binSkuPojoList){
             inventoryPojoList.add(create(binSkuPojo));
         }
         return inventoryPojoList;
     }
-    public static BinSkuPojo convert(BinSkuForm binSkuForm, long globalSkuId){
+    public static BinSkuPojo convertBinSkuFormToBinSkuPojo(BinSkuForm binSkuForm, long globalSkuId){
         BinSkuPojo binSkuPojo=new BinSkuPojo();
         binSkuPojo.setBinId(binSkuForm.getBinId());
         binSkuPojo.setGlobalSkuId(globalSkuId);
         binSkuPojo.setQuantity(binSkuForm.getQuantity());
         return binSkuPojo;
     }
-    public static BinSkuData convert(BinSkuPojo binSkuPojo){
+    public static List<BinSkuData> convertBinSkuPojoToBinSkuDataList(List<BinSkuPojo> binSkuPojoList) {
+        List<BinSkuData> binSkuDataList=new ArrayList<>();
+        for(BinSkuPojo binSkuPojo:binSkuPojoList){
+            binSkuDataList.add(convertBinSkuPojoToBinSkuData(binSkuPojo));
+        }
+        return binSkuDataList;
+    }
+
+    private static BinSkuData convertBinSkuPojoToBinSkuData(BinSkuPojo binSkuPojo) {
         BinSkuData binSkuData=new BinSkuData();
         binSkuData.setId(binSkuPojo.getId());
         binSkuData.setBinId(binSkuPojo.getBinId());
@@ -88,7 +118,7 @@ public class DtoHelper {
         return binSkuData;
     }
 
-    public static ChannelPojo convert(ChannelForm channelForm){
+    public static ChannelPojo convertChannelFormToPojo(ChannelForm channelForm){
         ChannelPojo channelPojo=new ChannelPojo();
         channelPojo.setName(channelForm.getName());
         channelPojo.setInvoiceType(InvoiceType.valueOf(channelForm.getInvoiceType()));
@@ -102,7 +132,7 @@ public class DtoHelper {
         inventoryPojo.setFulfilledQuantity(0L);
         return inventoryPojo;
     }
-    public static ChannelListingPojo convert(Long channelId, String channelSkuId, Long clientId, Long globalSkuId) {
+    public static ChannelListingPojo convertListingFormToPojo(Long channelId, String channelSkuId, Long clientId, Long globalSkuId) {
         ChannelListingPojo channelListingPojo=new ChannelListingPojo();
         channelListingPojo.setChannelId(channelId);
         channelListingPojo.setChannelSkuId(channelSkuId);
@@ -110,7 +140,7 @@ public class DtoHelper {
         channelListingPojo.setGlobalSkuId(globalSkuId);
         return channelListingPojo;
     }
-    public static List<ChannelListingData> convert(List<ChannelListingPojo> channelListingPojoList){
+    public static List<ChannelListingData> convertListingPojoToListingData(List<ChannelListingPojo> channelListingPojoList){
         List<ChannelListingData> channelListingData=new ArrayList<>();
         for(ChannelListingPojo channelListingPojo:channelListingPojoList){
             channelListingData.add(create(channelListingPojo));
@@ -135,7 +165,7 @@ public class DtoHelper {
         return orderPojo;
     }
 
-    public static OrderItemPojo convert(Long orderId, Long globalSkuId, OrderItemForm orderItemForm) {
+    public static OrderItemPojo convertToOrderItemPOJO(Long orderId, Long globalSkuId, OrderItemForm orderItemForm) {
         OrderItemPojo orderItemPojo=new OrderItemPojo();
         orderItemPojo.setOrderId(orderId);
         orderItemPojo.setGlobalSkuId(globalSkuId);
@@ -146,7 +176,7 @@ public class DtoHelper {
         return orderItemPojo;
     }
 
-    public static OrderPojo convert(ChannelOrderUploadForm orderUploadForm, long channelId){
+    public static OrderPojo convertOrderFormToOrderPojo(ChannelOrderUploadForm orderUploadForm, long channelId){
         OrderPojo orderPojo=new OrderPojo();
         orderPojo.setClientId(orderUploadForm.getClientId());
         orderPojo.setCustomerId(orderUploadForm.getCustomerId());
@@ -155,7 +185,7 @@ public class DtoHelper {
         orderPojo.setStatus(OrderStatus.CREATED);
         return orderPojo;
     }
-    public static OrderItemPojo convert(long orderId, ChannelOrderForm orderForm, long globalSkuID) {
+    public static OrderItemPojo convertOrderFormToOrderItemPojo(long orderId, ChannelOrderForm orderForm, long globalSkuID) {
         OrderItemPojo orderItemPojo=new OrderItemPojo();
         orderItemPojo.setOrderId(orderId);
         orderItemPojo.setGlobalSkuId(globalSkuID);

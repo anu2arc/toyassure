@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.increff.Util.ProductUtil.validate;
-import static com.increff.dto.DtoHelper.convert;
+import static com.increff.dto.DtoHelper.*;
 
 @Repository
 public class ProductDto {
@@ -24,13 +24,7 @@ public class ProductDto {
     @Autowired
     private ClientService clientService;
     public List<ProductData> getAll() {
-        //todo move to convert dto helper
-        List<ProductPojo> productPojoList=productService.getAll();
-        List<ProductData> productDataList=new ArrayList<>();
-        for(ProductPojo productPojo:productPojoList){
-            productDataList.add(convert(productPojo));
-        }
-        return productDataList;
+        return convertProductPojoToProductDataList(productService.getAll());
     }
 
     public void add(long clientId, List<ProductForm> productFormList) throws ApiException {
@@ -41,7 +35,7 @@ public class ProductDto {
         for(ProductForm productForm:productFormList){
             try{
                 validate(productForm);
-                productPojoList.add((convert(productForm,clientId)));
+                productPojoList.add((convertProductFormToProductPojo(productForm,clientId)));
             }
             catch (ApiException exception){
                 error.append(exception.getMessage());
@@ -54,7 +48,7 @@ public class ProductDto {
 
     public void update(long globalId, ProductUpdateForm productUpdateForm) throws ApiException {
         validate(productUpdateForm);
-        productService.update(convert(productUpdateForm,globalId));
+        productService.update(convertProductFormToPojo(productUpdateForm,globalId));
     }
 
 }

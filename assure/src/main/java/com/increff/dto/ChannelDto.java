@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import static com.increff.Util.ChannelUtil.validate;
-import static com.increff.dto.DtoHelper.convert;
+import static com.increff.dto.DtoHelper.convertChannelFormToPojo;
 
 @Repository
 public class ChannelDto {
@@ -16,6 +16,6 @@ public class ChannelDto {
     private ChannelService channelService;
     public void add(ChannelForm channelForm) throws ApiException {
         validate(channelForm);
-        channelService.add(convert(channelForm));
+        channelService.add(convertChannelFormToPojo(channelForm));
     }
 }

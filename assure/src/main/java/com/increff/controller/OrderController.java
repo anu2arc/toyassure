@@ -2,6 +2,7 @@ package com.increff.controller;
 
 
 import com.increff.dto.OrderDto;
+import com.increff.form.ChannelOrderUploadForm;
 import com.increff.model.forms.OrderForm;
 import com.increff.service.ApiException;
 import io.swagger.annotations.Api;
@@ -29,5 +30,11 @@ public class OrderController {
     @RequestMapping(value = "/invoice",method = RequestMethod.POST)
     public void generateInvoice(@RequestParam long orderId) throws ApiException {
         orderDto.generateInvoice(orderId);
+    }
+
+    @ApiOperation("place order thorough channel")
+    @RequestMapping(value = "/channel",method = RequestMethod.POST)
+    public String channelOrder(@RequestBody ChannelOrderUploadForm channelOrderUploadForm) throws ApiException {
+        return orderDto.addChannelOrder(channelOrderUploadForm);
     }
 }

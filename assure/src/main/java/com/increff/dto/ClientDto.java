@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.increff.Util.ClientUtil.validate;
-import static com.increff.dto.DtoHelper.convert;
+import static com.increff.dto.DtoHelper.*;
+
 @Repository
 public class ClientDto {
     @Autowired
@@ -20,18 +21,12 @@ public class ClientDto {
 
     public void add(ClientForm clientForm) throws ApiException {
         validate(clientForm);
-        clientService.add(convert(clientForm));
+        clientService.add(convertClientFormToPojo(clientForm));
     }
     public ClientData get(long clientId) throws ApiException {
-        return convert(clientService.get(clientId));
+        return convertClientPojoToClientData(clientService.get(clientId));
     }
-    // todo:: traverse list in convert
     public List<ClientData> getAll() {
-        List<ClientPojo> userPojoList= clientService.getAll();;
-        List<ClientData> clientData =new ArrayList<>();
-        for(ClientPojo userPojo:userPojoList) {
-            clientData.add(convert(userPojo));
-        }
-        return clientData;
+        return convertClientPojoToClientDataList(clientService.getAll());
     }
 }

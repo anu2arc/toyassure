@@ -2,7 +2,6 @@ package com.increff.controller;
 
 import com.increff.dto.OrderDto;
 import com.increff.form.ChannelOrderUploadForm;
-import com.increff.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,9 @@ public class OrderController {
 
     @Autowired
     private OrderDto orderDto;
-    @ApiOperation("")
+    @ApiOperation("Create Order")
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public void add(@RequestBody ChannelOrderUploadForm orderUploadForm) throws ApiException {
+    public void add(@RequestBody ChannelOrderUploadForm orderUploadForm) throws Exception {
         orderDto.add(orderUploadForm);
     }
 }

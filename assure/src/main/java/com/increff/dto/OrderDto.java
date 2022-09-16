@@ -20,8 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.increff.Util.OrderUtil.validate;
-import static com.increff.dto.DtoHelper.convert;
-import static com.increff.dto.DtoHelper.convertToOrderPOJO;
+import static com.increff.dto.DtoHelper.*;
 
 @Repository
 public class OrderDto {
@@ -41,7 +40,6 @@ public class OrderDto {
     private InventoryService inventoryService;
     @Autowired
     private BinService binService;
-
     @Transactional(rollbackOn = ApiException.class)
     public void add(OrderForm orderForm) throws ApiException {
         validate(orderForm);
@@ -53,7 +51,6 @@ public class OrderDto {
         List<OrderItemPojo> orderItemPojoList=getOrderItemPojo(orderForm,orderPojo,clientId);
         orderItemService.add(orderItemPojoList);
     }
-
     @Transactional(rollbackOn = ApiException.class)
     public void allocate(long orderId) throws ApiException {
         OrderPojo orderPojo=orderService.getOrder(orderId);
@@ -72,7 +69,7 @@ public class OrderDto {
                 binService.allocate(orderItemPojo.getGlobalSkuId(),newAllocatedQuantity);
             }
         }
-        if(flag) orderService.updateOrderStatus(orderId);
+        if(flag) orderService.updateOrderStatus(orderId,OrderStatus.ALLOCATED);
     }
 
     private List<OrderItemPojo> getOrderItemPojo(OrderForm orderForm,OrderPojo orderPojo,long clientId) throws ApiException {
@@ -84,7 +81,7 @@ public class OrderDto {
                 ProductPojo productPojo = productService.check(orderItemForm.getClientSkuId(), clientId);
                 if(productPojo==null)
                     throw new ApiException("Invalid clientSkuId");
-                orderItemPojoList.add(convert(orderPojo.getId(),productPojo.getGlobalSkuId(),orderItemForm));
+                orderItemPojoList.add(convertToOrderItemPOJO(orderPojo.getId(),productPojo.getGlobalSkuId(),orderItemForm));
             } catch (ApiException exception){
                 error.append(exception.getMessage());
             }
@@ -95,27 +92,26 @@ public class OrderDto {
     }
 
 
-    //todo:: don't touch as of now let it be here
+    // order through channel comes here
     @Transactional(rollbackOn = ApiException.class)
-    public void addChannelOrder(ChannelOrderUploadForm orderUploadForm) throws ApiException {
+    public String addChannelOrder(ChannelOrderUploadForm orderUploadForm) throws ApiException {
         validate(orderUploadForm);
         long channelId=channelService.getByName(orderUploadForm.getChannelName()).getId();
         clientService.checkIdAndType(orderUploadForm.getClientId(), ClientType.CLIENT);
         clientService.checkIdAndType(orderUploadForm.getCustomerId(), ClientType.CUSTOMER);
-        OrderPojo orderPojo=convert(orderUploadForm,channelId);
+        OrderPojo orderPojo=convertOrderFormToOrderPojo(orderUploadForm,channelId);
         orderService.add(orderPojo);
         List<OrderItemPojo> orderItemPojoList=getOrderItemList(orderUploadForm,orderPojo.getId(),channelId);
         orderItemService.add(orderItemPojoList);
+        return "Order placed with id:"+orderPojo.getId();
     }
-
-    //todo :: don't touch
     private List<OrderItemPojo> getOrderItemList(ChannelOrderUploadForm orderUploadForm, long orderId, long channelId) throws ApiException {
         List<OrderItemPojo> orderItemPojoList=new ArrayList<>();
         StringBuilder error=new StringBuilder();
         for(ChannelOrderForm orderForm: orderUploadForm.getItems()){
             try {
                 long globalSkuID = channelListingService.getGlobalSkuId(orderForm.getChannelSkuId(), orderUploadForm.getClientId(), channelId);
-                orderItemPojoList.add(DtoHelper.convert(orderId, orderForm, globalSkuID));
+                orderItemPojoList.add(convertOrderFormToOrderItemPojo(orderId, orderForm, globalSkuID));
             } catch (ApiException exception){
                 error.append(exception.getMessage());
             }
@@ -127,7 +123,26 @@ public class OrderDto {
 
     public void generateInvoice(long orderId) throws ApiException {
         OrderPojo orderPojo=orderService.getOrder(orderId);
+        if(orderPojo.getStatus()==OrderStatus.CREATED)
+            throw new ApiException("order not yet allocated");
+        if(orderPojo.getStatus()==OrderStatus.ALLOCATED){
+            fulfillOrder(orderId);
+            orderService.updateOrderStatus(orderId,OrderStatus.FULFILLED);
+        }
+        generatePdf(orderPojo);
+    }
 
+    private void generatePdf(OrderPojo orderPojo) {
+
+    }
+
+    @Transactional(rollbackOn = ApiException.class)
+    private void fulfillOrder(long orderId) throws ApiException {
+        List<OrderItemPojo> orderItemPojoList=orderItemService.getItemsByOrderId(orderId);
+        for(OrderItemPojo orderItemPojo:orderItemPojoList){
+            orderItemService.fulfillOrder(orderItemPojo.getId());
+            inventoryService.fulfillOrder(orderItemPojo.getGlobalSkuId(),orderItemPojo.getOrderedQuantity());
+        }
     }
 
     // todo:: make api to fetch all order and orderitems if required;
