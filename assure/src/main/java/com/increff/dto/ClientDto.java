@@ -7,6 +7,7 @@ import com.increff.service.ApiException;
 import com.increff.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,8 @@ import java.util.List;
 import static com.increff.Util.ClientUtil.validate;
 import static com.increff.dto.DtoHelper.*;
 
-@Repository
+@Service
+
 public class ClientDto {
     @Autowired
     private ClientService clientService;

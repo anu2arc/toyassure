@@ -5,11 +5,13 @@ import com.increff.service.ApiException;
 import com.increff.service.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import static com.increff.Util.ChannelUtil.validate;
 import static com.increff.dto.DtoHelper.convertChannelFormToPojo;
 
-@Repository
+@Service
+
 public class ChannelDto {
 
     @Autowired

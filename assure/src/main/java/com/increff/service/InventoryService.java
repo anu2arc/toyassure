@@ -26,7 +26,7 @@ public class InventoryService {
     public InventoryPojo check(long globalSkuId) throws ApiException {
         InventoryPojo presentPojo=inventoryDao.get(globalSkuId);
         if(presentPojo==null)
-            throw new ApiException("No record for given id:"+globalSkuId);
+            throw new ApiException("No record for given globalSkuId:"+globalSkuId);
         return presentPojo;
     }
 

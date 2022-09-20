@@ -34,7 +34,7 @@ public class ProductController {
 
     @ApiOperation(value = "update product detail's")
     @RequestMapping(value = "/{globalSkuId}",method = RequestMethod.PUT)
-    public void update(@RequestParam long globalSkuId, @RequestBody ProductUpdateForm productUpdateForm) throws ApiException {
+    public void update(@RequestParam Long globalSkuId, @RequestBody ProductUpdateForm productUpdateForm) throws ApiException {
         productDto.update(globalSkuId,productUpdateForm);
     }
 }

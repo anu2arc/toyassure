@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ChannelOrderForm {
+public class ChannelOrderForm {//todo rename
     private String channelSkuId;
     private Long quantity;
     private Double sellingPrice;

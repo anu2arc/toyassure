@@ -8,6 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderForm {
+    //todo use notnull
     private String clientName;
     private String channelOrderId;
     private String customerName;

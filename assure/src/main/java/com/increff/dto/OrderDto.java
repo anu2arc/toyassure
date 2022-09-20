@@ -3,16 +3,15 @@ package com.increff.dto;
 import com.increff.form.ChannelOrderForm;
 import com.increff.form.ChannelOrderUploadForm;
 import com.increff.model.enums.ClientType;
+import com.increff.model.enums.InvoiceType;
 import com.increff.model.enums.OrderStatus;
 import com.increff.model.forms.OrderForm;
 import com.increff.model.forms.OrderItemForm;
-import com.increff.pojo.InventoryPojo;
-import com.increff.pojo.OrderItemPojo;
-import com.increff.pojo.OrderPojo;
-import com.increff.pojo.ProductPojo;
+import com.increff.pojo.*;
 import com.increff.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import java.util.Objects;
 import static com.increff.Util.OrderUtil.validate;
 import static com.increff.dto.DtoHelper.*;
 
-@Repository
+@Service
 public class OrderDto {
     @Autowired
     private OrderService orderService;
@@ -60,7 +59,6 @@ public class OrderDto {
         boolean flag=true;
         for(OrderItemPojo orderItemPojo:orderItemPojoList){
             if(!Objects.equals(orderItemPojo.getOrderedQuantity(), orderItemPojo.getAllocatedQuantity())){
-                flag=false;
                 long quantityToAllocated=orderItemPojo.getOrderedQuantity()-orderItemPojo.getAllocatedQuantity();
                 InventoryPojo inventoryPojo=inventoryService.check(orderItemPojo.getGlobalSkuId());
                 long newAllocatedQuantity=Math.min(quantityToAllocated,inventoryPojo.getAvailableQuantity());
@@ -68,6 +66,7 @@ public class OrderDto {
                 inventoryService.allocateInventory(orderItemPojo.getGlobalSkuId(),newAllocatedQuantity);
                 binService.allocate(orderItemPojo.getGlobalSkuId(),newAllocatedQuantity);
             }
+            if(orderItemService.getOrderStatus(orderItemPojo)) flag=false;
         }
         if(flag) orderService.updateOrderStatus(orderId,OrderStatus.ALLOCATED);
     }
@@ -80,7 +79,7 @@ public class OrderDto {
                 validate(orderItemForm);
                 ProductPojo productPojo = productService.check(orderItemForm.getClientSkuId(), clientId);
                 if(productPojo==null)
-                    throw new ApiException("Invalid clientSkuId");
+                    throw new ApiException("ClientSkuId does not exist");
                 orderItemPojoList.add(convertToOrderItemPOJO(orderPojo.getId(),productPojo.getGlobalSkuId(),orderItemForm));
             } catch (ApiException exception){
                 error.append(exception.getMessage());
@@ -90,7 +89,6 @@ public class OrderDto {
             throw new ApiException(error.toString());
         return orderItemPojoList;
     }
-
 
     // order through channel comes here
     @Transactional(rollbackOn = ApiException.class)
@@ -132,8 +130,11 @@ public class OrderDto {
         generatePdf(orderPojo);
     }
 
-    private void generatePdf(OrderPojo orderPojo) {
-
+    private void generatePdf(OrderPojo orderPojo) throws ApiException {
+        ChannelPojo channelPojo= channelService.get(orderPojo.getChannelId());
+        if(channelPojo.getInvoiceType()== InvoiceType.SELF);
+        //todo :: for type self generate invoice
+        //todo:: for type Channel call channel's api to generate invoice
     }
 
     @Transactional(rollbackOn = ApiException.class)

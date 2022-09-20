@@ -36,7 +36,7 @@ public class OrderUtil {
         if(Objects.isNull(orderForm.getChannelOrderId())||orderForm.getChannelOrderId().trim().equals(""))
             throw new ApiException("Channel order id cannot be null");
         if(orderForm.getOrderItems().size()==0)
-            throw new ApiException("Their must be at least one order item");
+            throw new ApiException("There must be at least one order item");
         normalize(orderForm);
     }
     public static void normalize(OrderItemForm orderItemForm){
@@ -50,8 +50,6 @@ public class OrderUtil {
         orderForm.setCustomerName(orderForm.getCustomerName().trim().toLowerCase());
     }
 
-
-//    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("0.00");
     public static void validate(ChannelOrderUploadForm orderUploadForm) throws ApiException {
         if(Objects.isNull(orderUploadForm.getChannelName()) || orderUploadForm.getChannelName().trim().equals(""))
             throw new ApiException("Channel name cannot be empty");

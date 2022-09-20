@@ -60,15 +60,16 @@ public class BinService {
     }
 
     @Transactional
-    public void allocate(Long globalSkuId, long AllocatedQuantity) throws ApiException {
+    public void allocate(Long globalSkuId, long allocatedQuantity) throws ApiException {
         List<BinSkuPojo> binSkuPojoList=binSkuDao.getAllBinWithAvailableProduct(globalSkuId);
+        if(binSkuPojoList==null) throw new ApiException("No valid bin found for the given globalSkuId:"+globalSkuId);
         for(BinSkuPojo binSkuPojo:binSkuPojoList){
-            if(AllocatedQuantity==0) break;
-            long quantityToReduce=Math.min(AllocatedQuantity,binSkuPojo.getQuantity());
+            if(allocatedQuantity==0) break;
+            long quantityToReduce=Math.min(allocatedQuantity,binSkuPojo.getQuantity());
             binSkuPojo.setQuantity(binSkuPojo.getQuantity()-quantityToReduce);
-            AllocatedQuantity=AllocatedQuantity-quantityToReduce;
+            allocatedQuantity=allocatedQuantity-quantityToReduce;
         }
-        if(AllocatedQuantity!=0)
-            throw new ApiException("inventory missing from bin");
+        if(allocatedQuantity!=0)
+            throw new ApiException("inventory missing from bin");//error msg insufficient
     }
 }

@@ -44,4 +44,12 @@ public class ChannelService {
         channelPojo.setInvoiceType(InvoiceType.SELF);
         return channelPojo;
     }
+
+    public ChannelPojo get(long channelId) throws ApiException {
+        ChannelPojo pojo=channelDao.getByID(channelId);
+        if(pojo==null) {
+            throw new ApiException("Invalid channel name");
+        }
+        return pojo;
+    }
 }

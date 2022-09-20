@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class OrderItemService {
@@ -20,8 +21,11 @@ public class OrderItemService {
         }
     }
 
-    public List<OrderItemPojo> getItemsByOrderId(long orderId) {
-        return orderItemDao.getItemsByOrderId(orderId);
+    public List<OrderItemPojo> getItemsByOrderId(long orderId) throws ApiException {
+        List<OrderItemPojo> orderItemPojoList=orderItemDao.getItemsByOrderId(orderId);
+        if(orderItemPojoList==null)
+            throw new ApiException("No item's for given order id");
+        return orderItemPojoList;
     }
 
     @Transactional
@@ -39,5 +43,10 @@ public class OrderItemService {
             throw new ArrayIndexOutOfBoundsException("Invalid id for orderItem");
         orderItemPojo.setAllocatedQuantity(0L);
         orderItemPojo.setFulfilledQuantity(orderItemPojo.getOrderedQuantity());
+    }
+
+    public boolean getOrderStatus(OrderItemPojo orderItemPojo) {
+        OrderItemPojo pojo= orderItemDao.get(orderItemPojo.getId());
+        return Objects.equals(pojo.getOrderedQuantity(), pojo.getAllocatedQuantity());
     }
 }

@@ -11,6 +11,8 @@ import javax.transaction.Transactional;
 @Repository
 public class ChannelDao {
     private static final String SELECT_BY_NAME="select cp from ChannelPojo cp where name=:name";
+    private static final String SELECT_BY_ID="select cp from ChannelPojo cp where id=:id";
+
 
     private TypedQuery<ChannelPojo> getQuery(String jpql) {
         return entityManager.createQuery(jpql, ChannelPojo.class);
@@ -30,4 +32,9 @@ public class ChannelDao {
         return query.getResultList().stream().findFirst().orElse(null);
     }
 
+    public ChannelPojo getByID(long channelId) {
+        TypedQuery<ChannelPojo> query=getQuery(SELECT_BY_ID);
+        query.setParameter("id",channelId);
+        return query.getResultList().stream().findFirst().orElse(null);
+    }
 }

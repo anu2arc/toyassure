@@ -9,6 +9,7 @@ import com.increff.pojo.ProductPojo;
 import com.increff.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,8 @@ import static com.increff.Util.ChannelListingUtil.normalize;
 import static com.increff.Util.ChannelListingUtil.validate;
 import static com.increff.dto.DtoHelper.*;
 
-@Repository
+@Service
+
 public class ChannelListingDto {
     @Autowired
     private ChannelListingService channelListingService;
