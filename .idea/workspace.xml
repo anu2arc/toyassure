@@ -4,40 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="order can be placed though channel now">
-      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/data/ChannelData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/bin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/channel.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/channelListing.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/order.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/bin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/channel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/channelListing.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" afterDir="false" />
+    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="UI added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/BinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/BinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/ChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/ChannelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/controller/UIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/ChannelDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dao/ChannelDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ChannelDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ChannelDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ChannelListingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ChannelListingDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/DtoHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/DtoHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/dto/ProductDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/BinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/BinService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ChannelListingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ChannelListingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ChannelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/OrderItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/OrderItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/snippets.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/snippets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/static/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/BinSkuForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/BinSkuForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ChannelForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ChannelForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ChannelListingForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ChannelListingForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ChannelListingUploadForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ChannelListingUploadForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ClientForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ClientForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/OrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/OrderForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/OrderItemForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/OrderItemForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ProductForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/model/forms/ProductForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663667171289</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="UI added">
+      <created>1663912392618</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663912392618</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -217,6 +200,7 @@
     <MESSAGE value="order allocated" />
     <MESSAGE value="order can be placed thought channel now" />
     <MESSAGE value="order can be placed though channel now" />
-    <option name="LAST_COMMIT_MESSAGE" value="order can be placed though channel now" />
+    <MESSAGE value="UI added" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI added" />
   </component>
 </project>
