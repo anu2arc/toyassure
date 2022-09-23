@@ -34,7 +34,7 @@ public class BinController {
 
     @ApiOperation("Upload bin wise inventory")
     @RequestMapping(value = "/upload/{clientId}",method = RequestMethod.POST)
-    public void add(@RequestParam long clientId,@RequestBody List<BinSkuForm> binSkuForms) throws ApiException {
+    public void add(@PathVariable long clientId,@RequestBody List<BinSkuForm> binSkuForms) throws ApiException {
         binDto.add(binSkuForms,clientId);
     }
 
@@ -46,7 +46,7 @@ public class BinController {
 
     @ApiOperation("Edit by id")
     @RequestMapping(value = "/sku/{id}",method = RequestMethod.PUT)
-    public void update(@RequestParam long id, @RequestBody BinSkuUpdateForm binSkuUpdateForm) throws ApiException {
+    public void update(@PathVariable long id, @RequestBody BinSkuUpdateForm binSkuUpdateForm) throws ApiException {
         binDto.update(id,binSkuUpdateForm);
     }
 }

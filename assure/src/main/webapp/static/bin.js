@@ -1,17 +1,38 @@
 function getBaseUrl() {
     var baseUrl = $("meta[name=baseUrl]").attr("content")
-    return baseUrl + "/api/product";
+    return baseUrl + "/api/bin";
 }
 
-function getAllProducts() {
-    var url = getBaseUrl();
+function createBins() {
+    var url = getBaseUrl() + '?noOfBin=' + document.getElementById('noOfBins').value;
+    json = "";
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: json,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        success: function (response) {
+            $('.notifyjs-corner').empty();
+            $.notify("Bins created", "success");
+        },
+        error: function (response) {
+            $('.notifyjs-corner').empty();
+            console.log(response);
+            $.notify("error", { autoHide: false });
+        }
+    });
+}
+
+function fetchAllBins() {
+    var url = getBaseUrl() + "/sku";
     $.ajax({
         url: url,
         type: 'GET',
-        success: function (productData) {
-            $.notify("got all Products list", "success");
-            console.log(productData);
-            setProductData(productData);
+        success: function (binSkuData) {
+            $.notify("got all bins list", "success");
+            setBinData(binSkuData);
         },
         error: function (response) {
             $('.notifyjs-corner').empty();
@@ -20,42 +41,29 @@ function getAllProducts() {
     });
 }
 
-function setProductData(productData) {
-    var $tbody = $('#product-table').find('tbody');
+
+function setBinData(binSkuData) {
+    console.log(binSkuData);
+    var $tbody = $('#binSku-table').find('tbody');
     $tbody.empty();
     var button = 'type="button" class="btn btn-primary"';
-    for (var index in productData) {
-        var data = productData[index];
-        console.log(data);
-        console.log(data.globalSkuId);
-        var buttonHtml = ' <button ' + button + ' onclick="editProduct(' + data.globalSkuId + ')">Edit</button>';
+    for (var index in binSkuData) {
+        var data = binSkuData[index];
+        var buttonHtml = ' <button ' + button + ' onclick="editBinSku(' + data.id + ')">Edit</button>';
         var row = '<tr>'
+            + '<td>' + data.id + '</td>'
+            + '<td>' + data.binId + '</td>'
             + '<td>' + data.globalSkuId + '</td>'
-            + '<td>' + data.clientSkuId + '</td>'
-            + '<td>' + data.clientId + '</td>'
-            + '<td>' + data.name + '</td>'
-            + '<td>' + data.brandId + '</td>'
-            + '<td>' + data.mrp + '</td>'
-            + '<td>' + data.description + '</td>'
+            + '<td>' + data.quantity + '</td>'
             + '<td>' + buttonHtml + '</td>'
             + '</tr>';
         $tbody.append(row);
     }
-
 }
 
-function showAddUserModel() {
-    $('#add-product-modal').modal('toggle');
-}
-
-function editProduct(globalSkuID) {
-    $('#edit-product-modal').modal('toggle');
-    $("#edit-product-form input[name=globalSkuId]").val(globalSkuID);
-}
-
-function updateProduct() {
-    var url = getBaseUrl() + '/' + document.getElementById('globalsku').value;
-    var $form = $("#edit-product-form");
+function editQuantity() {
+    var url = getBaseUrl() + '/sku/' + document.getElementById('hiddengsku').value;
+    var $form = $("#edit-quantity-form");
     var json = toJson($form);
     $.ajax({
         url: url,
@@ -65,10 +73,10 @@ function updateProduct() {
             'Content-Type': 'application/json'
         },
         success: function (response) {
-            $('#edit-product-modal').modal('toggle');
+            $('#edit-bins-modal').modal('toggle');
             $('.notifyjs-corner').empty();
             $.notify("Updated", "success");
-            getAllProducts();     //...
+            fetchAllBins();     //...
         },
         error: function (response) {
             $('.notifyjs-corner').empty();
@@ -77,30 +85,30 @@ function updateProduct() {
     });
 }
 
+function editBinSku(id) {
+    $('#edit-bins-modal').modal('toggle');
+    document.getElementById('hiddengsku').value = id;
 
-// function addProduct(){
-
-// }
-
-function toJson($form) {
-    var serialized = $form.serializeArray();
-    var s = '';
-    var data = {};
-    for (s in serialized) {
-        data[serialized[s]['name']] = serialized[s]['value']
-    }
-    var json = JSON.stringify(data);
-    return json;
 }
+
+function generatebinModel() {
+    $('#generate-bins-modal').modal('toggle');
+}
+
+function addbinSkuModel() {
+    $('#add-binsku-modal').modal('toggle');
+}
+
 
 
 function init() {
-    $('#add-product').click(showAddUserModel);
-    $('#update-submit').click(updateProduct);
+
+    $('#generate-bin').click(generatebinModel);
+    $('#add-bin').click(addbinSkuModel);
+    $('#generate-submit').click(createBins);
     $('#Add-submit').click(processData);
+    $('#edit-submit').click(editQuantity);
 }
-
-
 
 // csv handling for productDataList
 
@@ -147,7 +155,8 @@ function readFileDataCallback(results) {
 
 function uploadRows() {
     var json = JSON.stringify(fileData);
-    var url = getBaseUrl() + '/' + document.getElementById('clientId').value;
+    console.log(json);
+    var url = getBaseUrl() + '/upload/' + document.getElementById('clientId').value;
     $.ajax({
         url: url,
         type: 'POST',
@@ -158,8 +167,7 @@ function uploadRows() {
         success: function (response) {
             $('.notifyjs-corner').empty();
             $.notify("Upload Successful", "success");
-            getAllProducts();//change
-            // updateUploadDialog();//change
+            fetchAllBins();
         },
         error: function (response) {
             console.log(response['responseJSON']);
@@ -192,8 +200,8 @@ function resetUploadDialog() {
 }
 
 function updateUploadDialog() {
-    $('#rowCount').html("" + fileData.length);
-    $('#processCount').html("" + processCount);
+    // $('#rowCount').html("" + fileData.length);
+    // $('#processCount').html("" + processCount);
     // if (errorData.length > 0)
     //     document.getElementById('download-errors').disabled = false;
     // else
@@ -239,6 +247,5 @@ function writeFileData(arr) {
 
 
 
-
 $(document).ready(init);
-$(document).ready(getAllProducts);
+$(document).ready(fetchAllBins);

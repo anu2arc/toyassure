@@ -44,7 +44,7 @@ public class ChannelListingDto {
             normalize(channelListingForm);
             ProductPojo productPojo= productService.check(channelListingForm.getClientSkuId(), clientId);
             if(productPojo==null)
-                error.append("Invalid clientId");
+                error.append("Product doesn't exist for given client SKU ID");
             else {
                 channelListingPojos.add(convertListingFormToPojo(channelId,channelListingForm.getChannelSkuId(),clientId,productPojo.getGlobalSkuId()));
             }

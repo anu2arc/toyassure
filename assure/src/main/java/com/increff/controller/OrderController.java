@@ -23,12 +23,12 @@ public class OrderController {
     }
     @ApiOperation("allocate order")
     @RequestMapping(value = "/allocate",method = RequestMethod.POST)
-    public void allocate(@RequestParam long orderId) throws ApiException {
+    public void allocate(@PathVariable long orderId) throws ApiException {
         orderDto.allocate(orderId);
     }
     @ApiOperation("generate invoice")
     @RequestMapping(value = "/invoice",method = RequestMethod.POST)
-    public void generateInvoice(@RequestParam long orderId) throws ApiException {
+    public void generateInvoice(@PathVariable long orderId) throws ApiException {
         orderDto.generateInvoice(orderId);
     }
 

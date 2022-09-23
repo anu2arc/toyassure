@@ -55,7 +55,7 @@ public class BinService {
     public BinSkuPojo get(long id) throws ApiException {
         BinSkuPojo binSkuPojo=binSkuDao.get(id);
         if(binSkuPojo==null)
-            throw new ApiException("Invalid id");
+            throw new ApiException("Bin does not exist for given Bin ID");
         return binSkuPojo;
     }
 
@@ -70,6 +70,6 @@ public class BinService {
             allocatedQuantity=allocatedQuantity-quantityToReduce;
         }
         if(allocatedQuantity!=0)
-            throw new ApiException("inventory missing from bin");//error msg insufficient
+            throw new ApiException("Insufficient inventory in bins");//error msg insufficient
     }
 }

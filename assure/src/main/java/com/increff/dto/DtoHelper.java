@@ -195,4 +195,19 @@ public class DtoHelper {
         orderItemPojo.setSellingPricePerUnit(orderForm.getSellingPrice());
         return orderItemPojo;
     }
+
+    public static List<ChannelData> convertChannelPojoToDataList(List<ChannelPojo> channelPojoList) {
+        List<ChannelData> channelData=new ArrayList<>();
+        for(ChannelPojo channelPojo:channelPojoList){
+            channelData.add(convertChannelPojoToData(channelPojo));
+        }
+        return channelData;
+    }
+
+    public static ChannelData convertChannelPojoToData(ChannelPojo channelPojo) {
+        ChannelData channelData=new ChannelData();
+        channelData.setInvoiceType(channelPojo.getInvoiceType().toString());
+        channelData.setName(channelPojo.getName());
+        return channelData;
+    }
 }

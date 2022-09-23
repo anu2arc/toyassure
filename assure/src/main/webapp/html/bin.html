@@ -1,0 +1,170 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head">
+
+</head>
+
+<body>
+
+    <nav th:replace="snippets.html :: name_navbar"></nav>
+
+    <div class="container">
+        <!-- <h5>Bin</h5> -->
+        <div class="row">
+            <div class="col-12">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary" id="generate-bin">Generate Bins</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-primary" id="add-bin">Add Bin SKU's</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- blank row  -->
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped" id="binSku-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">BinId</th>
+                            <th scope="col">Global Sku Id</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- empty Row -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- generate bins Modal -->
+        <div class="modal" tabindex="-1" role="dialog" id="generate-bins-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Generate Bins</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline" id="add-product-form">
+                            <div class="form-group" style="margin: 10px;">
+                                <label for="noOfBins" style="margin-right: 40px;">No of Bins</label>
+                                <div>
+                                    <input type="text" class="form-control" id="noOfBins" name="noOfBins"
+                                        placeholder="Enter No of Bins">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="generate-submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- add bin sku's model -->
+        <div class="modal" tabindex="-1" role="dialog" id="add-binsku-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Upload Bin Sku's</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline" id="add-product-form">
+                            <div class="form-group" style="margin: 10px;">
+                                <label for="clientId" style="margin-right: 40px;">Client ID</label>
+                                <div>
+                                    <input type="text" class="form-control" id="clientId" name="clientId"
+                                        placeholder="Enter Client ID">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin: 2px;">
+                                <a id="missingClientId" style="color: red;"></a>
+                            </div>
+                        </form>
+                        <div class="form-group" style="margin: 10px;">
+                            <label class="form-label" for="customFile">Select File</label>
+                            <input type="file" class="customFile" id="customFile" />
+                        </div>
+                        <div class="form-group" style="margin: 2px;">
+                            <a id="missingFile" style="color: red;"></a>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="Add-submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Bin Sku Model  -->
+        <div class="modal" tabindex="-1" role="dialog" id="edit-bins-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Quantity</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline" id="edit-quantity-form">
+                            <div class="form-group" style="margin: 10px;">
+                                <label for="quantity" style="margin-right: 40px;">Enter Quantity</label>
+                                <div>
+                                    <input type="text" class="form-control" id="quantity" name="quantity"
+                                        placeholder="Enter quantity">
+                                </div>
+                            </div>
+                            <input type="hidden" value="1" id="hiddengsku"></input>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="edit-submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- Container end-->
+
+    <footer class="footer" th:fragment="name_footer">
+        Copyright Increff 2019
+        &nbsp;
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script th:src="@{/static/bin.js}" />
+        </script>
+        <script th:src="@{/static/app.js}" />
+        </script>
+        <script th:src="@{/static/papaparse.min.js}" />
+        </script>
+        <script th:src="@{/static/notify.js}" />
+        </script>
+    </footer>
+</body>
+
+</html>

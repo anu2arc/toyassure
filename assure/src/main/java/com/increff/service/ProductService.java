@@ -22,23 +22,6 @@ public class ProductService {
 
     @Transactional(rollbackOn = ApiException.class)
     public void add(List<ProductPojo> productPojoList) throws ApiException {
-        Set<String> skuIdSet =new HashSet<>();
-        StringBuilder error=new StringBuilder();
-        for(ProductPojo productPojo:productPojoList){
-            try {
-                //todo :: move this check to dto
-                if (skuIdSet.contains(productPojo.getClientSkuId() + productPojo.getClientId()))
-                    throw new ApiException("Duplicate entry for product :"+productPojo.getClientSkuId()+"\n");
-                if(check(productPojo.getClientSkuId(),productPojo.getClientId())!=null)
-                    throw new ApiException("Product already exist");
-                skuIdSet.add(productPojo.getClientSkuId() + productPojo.getClientId());
-            }
-            catch (ApiException exception){
-                error.append(exception.getMessage());
-            }
-        }
-        if(!error.toString().isEmpty())
-            throw new ApiException(error.toString());
         for(ProductPojo productPojo:productPojoList){
             productDao.insert(productPojo);
         }
@@ -46,7 +29,7 @@ public class ProductService {
     public ProductPojo check(String clientSkuId) throws ApiException {
         ProductPojo productPojo=productDao.check(clientSkuId);
         if(productPojo==null)
-            throw new ApiException("Invalid clientSkuId :"+clientSkuId);
+            throw new ApiException("product does not exist for given id:"+clientSkuId);
         return productPojo;
     }
     public ProductPojo check(String clientSkuId,long clientID) throws ApiException {
@@ -54,16 +37,15 @@ public class ProductService {
     }
     @Transactional(rollbackOn = ApiException.class)
     public void update(ProductPojo productPojo) throws ApiException {
-        //todo change names
-        ProductPojo presentPojo=productDao.getGlobal(productPojo.getGlobalSkuId());
-        if(presentPojo==null)
-            throw new ApiException("Invalid Global Sku Id");
-        setProductPojo(productPojo,presentPojo);
+        ProductPojo pojo=productDao.getGlobal(productPojo.getGlobalSkuId());
+        if(pojo==null)
+            throw new ApiException("product does not exist for given GlobalSkuId: "+productPojo.getGlobalSkuId());
+        setProductPojo(productPojo,pojo);
     }
-    private void setProductPojo(ProductPojo productPojo, ProductPojo presentPojo){
-        presentPojo.setDescription(productPojo.getDescription());
-        presentPojo.setName(productPojo.getName());
-        presentPojo.setMrp(productPojo.getMrp());
-        presentPojo.setBrandId(productPojo.getBrandId());
+    private void setProductPojo(ProductPojo productPojo, ProductPojo pojo){
+        pojo.setDescription(productPojo.getDescription());
+        pojo.setName(productPojo.getName());
+        pojo.setMrp(productPojo.getMrp());
+        pojo.setBrandId(productPojo.getBrandId());
     }
 }

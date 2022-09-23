@@ -1,6 +1,7 @@
 package com.increff.controller;
 
 import com.increff.dto.ChannelDto;
+import com.increff.model.data.ChannelData;
 import com.increff.model.forms.ChannelForm;
 import com.increff.service.ApiException;
 import io.swagger.annotations.Api;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Api
 @RestController
@@ -23,5 +26,10 @@ public class ChannelController {
     public void add(@RequestBody ChannelForm channelForm) throws ApiException {
         channelDto.add(channelForm);
     }
-    //todo :: add fetch all api;
+
+    @ApiOperation("")
+    @RequestMapping(value="",method = RequestMethod.GET)
+    public List<ChannelData> getAll() throws ApiException {
+        return channelDto.getAll();
+    }
 }

@@ -18,7 +18,7 @@ public class OrderService {
     public OrderPojo getOrder(long orderId) throws ApiException {
         OrderPojo orderPojo=orderDao.getOrder(orderId);
         if(orderPojo==null)
-            throw new ApiException("Invalid orderId");
+            throw new ApiException("order does not exists for given ID");
         return orderPojo;
     }
 

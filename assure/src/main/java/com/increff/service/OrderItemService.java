@@ -32,7 +32,7 @@ public class OrderItemService {
     public void allocateQuantity(Long id, long newAllocatedQuantity) throws ApiException {
         OrderItemPojo orderItemPojo=orderItemDao.get(id);
         if(orderItemPojo==null)
-            throw new ApiException("Invalid id for orderItem");
+            throw new ApiException("order item does not exists for given ID");
         orderItemPojo.setAllocatedQuantity(orderItemPojo.getAllocatedQuantity()+newAllocatedQuantity);
     }
 
@@ -40,7 +40,7 @@ public class OrderItemService {
     public void fulfillOrder(long id) {
         OrderItemPojo orderItemPojo= orderItemDao.get(id);
         if(orderItemPojo==null)
-            throw new ArrayIndexOutOfBoundsException("Invalid id for orderItem");
+            throw new ArrayIndexOutOfBoundsException("Order Item does not exists for given ID");
         orderItemPojo.setAllocatedQuantity(0L);
         orderItemPojo.setFulfilledQuantity(orderItemPojo.getOrderedQuantity());
     }

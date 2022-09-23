@@ -26,7 +26,7 @@ public class ClientService {
     public ClientPojo get(long id) throws ApiException {
         ClientPojo userPojo= clientDao.get(id);
         if(userPojo==null)
-            throw new ApiException("Invalid clientId");
+            throw new ApiException("client does not exist for given ID: "+id);
         return userPojo;
     }
     public void checkPair(ClientPojo userPojo) throws ApiException {
@@ -38,12 +38,12 @@ public class ClientService {
     public ClientPojo getByName(String clientName, ClientType clientType) throws ApiException {
         ClientPojo clientPojo= clientDao.getByName(clientName,clientType);
         if(clientPojo==null)
-            throw new ApiException("Invalid "+clientType+" name");
+            throw new ApiException("client does not exist for given name: "+clientName);
         return clientPojo;
     }
 
     public void checkIdAndType(long clientId, ClientType type) throws ApiException {
         if(clientDao.checkIdAndType(clientId,type)==null)
-            throw new ApiException("Invalid "+type+" id");
+            throw new ApiException("client does not exist for given id and type");
     }
 }

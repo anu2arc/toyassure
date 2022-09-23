@@ -32,24 +32,24 @@ public class UIController {
 		return mav("products.html");
 	}
 
-	@RequestMapping(value = "/ui/inventory")
+	@RequestMapping(value = "/ui/bin")
 	public ModelAndView inventory() {
-		return mav("inventory.html");
+		return mav("bin.html");
 	}
 
-	@RequestMapping(value = "/ui/placeorder")
+	@RequestMapping(value = "/ui/channel")
 	public ModelAndView placeOrder() {
-		return mav("placeorder.html");
+		return mav("channel.html");
 	}
 
-	@RequestMapping(value = "/ui/vieworder")
+	@RequestMapping(value = "/ui/channelListing")
 	public ModelAndView viewOrder() {
-		return mav("vieworder.html");
+		return mav("channelListing.html");
 	}
 
-	@RequestMapping(value = "/ui/reports")
+	@RequestMapping(value = "/ui/order")
 	public ModelAndView reports() {
-		return mav("reports.html");
+		return mav("order.html");
 	}
 
 	private ModelAndView mav(String page) {

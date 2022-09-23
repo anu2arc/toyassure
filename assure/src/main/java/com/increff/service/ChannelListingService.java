@@ -27,7 +27,7 @@ public class ChannelListingService {
     public long getGlobalSkuId(String channelSkuId, Long clientId, long channelId) throws ApiException {
         ChannelListingPojo channelListingPojo=channelListingDao.get(channelSkuId,clientId,channelId);
         if(channelListingPojo==null)
-            throw new ApiException("Invalid channelSkuId");
+            throw new ApiException("No entry for given channel SKU ID");
         return channelListingPojo.getGlobalSkuId();
     }
 }

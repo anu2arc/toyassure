@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class ChannelService {
@@ -34,7 +35,7 @@ public class ChannelService {
         setInternal();
         ChannelPojo pojo=channelDao.check(channelName);
         if(pojo==null) {
-            throw new ApiException("Invalid channel name");
+            throw new ApiException("channel does not exists by given name");
         }
         return pojo;
     }
@@ -48,8 +49,13 @@ public class ChannelService {
     public ChannelPojo get(long channelId) throws ApiException {
         ChannelPojo pojo=channelDao.getByID(channelId);
         if(pojo==null) {
-            throw new ApiException("Invalid channel name");
+            throw new ApiException("channel ID does not exists");
         }
         return pojo;
+    }
+
+    public List<ChannelPojo> getAll() {
+        setInternal();
+        return channelDao.getAll();
     }
 }

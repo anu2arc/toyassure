@@ -28,13 +28,13 @@ public class ProductController {
 
     @ApiOperation(value = "add list of product")
     @RequestMapping(value = "/{clientId}",method = RequestMethod.POST)
-    public void add(@RequestParam long clientId, @RequestBody List<ProductForm> productFormList) throws ApiException {
+    public void add(@PathVariable long clientId, @RequestBody List<ProductForm> productFormList) throws ApiException {
         productDto.add(clientId,productFormList);
     }
 
     @ApiOperation(value = "update product detail's")
     @RequestMapping(value = "/{globalSkuId}",method = RequestMethod.PUT)
-    public void update(@RequestParam Long globalSkuId, @RequestBody ProductUpdateForm productUpdateForm) throws ApiException {
+    public void update(@PathVariable Long globalSkuId, @RequestBody ProductUpdateForm productUpdateForm) throws ApiException {
         productDto.update(globalSkuId,productUpdateForm);
     }
 }
