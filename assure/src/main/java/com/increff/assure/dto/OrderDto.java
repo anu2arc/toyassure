@@ -4,7 +4,9 @@ import com.increff.assure.model.forms.OrderForm;
 import com.increff.assure.model.forms.OrderItemForm;
 import com.increff.assure.pojo.*;
 import com.increff.assure.service.*;
+import com.increff.commons.data.InvoiceData;
 import com.increff.commons.data.OrderData;
+import com.increff.commons.data.OrderItemData;
 import com.increff.commons.enums.ClientType;
 import com.increff.commons.enums.InvoiceType;
 import com.increff.commons.enums.OrderStatus;
@@ -14,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -120,7 +124,7 @@ public class OrderDto {
     }
 
     @Transactional(rollbackOn = ApiException.class)
-    public void generateInvoice(long orderId) throws ApiException {
+    public void generateInvoice(long orderId) throws ApiException, IOException, TransformerException {
         OrderPojo orderPojo=orderService.getOrder(orderId);
         if(Objects.equals(orderPojo.getStatus(),OrderStatus.CREATED))
             throw new ApiException("order not yet allocated");
@@ -128,17 +132,47 @@ public class OrderDto {
             fulfillOrder(orderId);
             orderService.updateOrderStatus(orderId,OrderStatus.FULFILLED);
         }
-        if(Objects.equals(orderService.getOrder(orderId).getStatus(),OrderStatus.FULFILLED))
-        generatePdf(orderPojo);
+        if(Objects.equals(orderService.getOrder(orderId).getStatus(),OrderStatus.FULFILLED)){
+            ChannelPojo channelPojo= channelService.get(orderPojo.getChannelId());
+            if(Objects.equals(channelPojo.getInvoiceType(),InvoiceType.SELF))
+                generatePdf(orderPojo);
+                //todo call channel Api to generate invoice
+        }
     }
 
-    private void generatePdf(OrderPojo orderPojo) throws ApiException {
-        ChannelPojo channelPojo= channelService.get(orderPojo.getChannelId());
-        if(Objects.equals(channelPojo.getInvoiceType(),InvoiceType.SELF));
-        //todo :: for type self generate invoice
-        //todo:: for type Channel call channel's api to generate invoice
+    private void generatePdf(OrderPojo orderPojo) throws ApiException, IOException, TransformerException {
+        String channelName=channelService.get(orderPojo.getChannelId()).getName();
+        String customerName=clientService.get(orderPojo.getCustomerId()).getName();
+        List<OrderItemData> orderItemDataList=convertOrderItemPojoToOrderItemDataList(orderItemService.getItemsByOrderId(orderPojo.getId()));
+        Double total=getTotalAmount(orderPojo.getId());
+        InvoiceData invoiceData=new InvoiceData(orderItemDataList,total,channelName,customerName);
+        orderService.generateInvoice(invoiceData,orderPojo.getId());
     }
 
+    private Double getTotalAmount(Long id) throws ApiException {
+        List<OrderItemPojo> orderItemPojoList=orderItemService.getItemsByOrderId(id);
+        Double total=0.0;
+        for(OrderItemPojo orderItemPojo:orderItemPojoList){
+            total+=orderItemPojo.getOrderedQuantity()*orderItemPojo.getSellingPricePerUnit();
+        }
+        return total;
+    }
+
+    public static List<OrderItemData> convertOrderItemPojoToOrderItemDataList(List<OrderItemPojo> orderItemPojoList) {
+        List<OrderItemData> orderItemDataList=new ArrayList<>();
+        for(OrderItemPojo orderItemPojo:orderItemPojoList){
+            orderItemDataList.add(convertOrderItemPojoToOrderItemData(orderItemPojo));
+        }
+        return orderItemDataList;
+    }
+
+    public static OrderItemData convertOrderItemPojoToOrderItemData(OrderItemPojo orderItemPojo) {
+        OrderItemData orderItemData=new OrderItemData();
+        orderItemData.setGlobalSkuId(orderItemPojo.getGlobalSkuId());
+        orderItemData.setQuantity(orderItemPojo.getOrderedQuantity());
+        orderItemData.setSellingPrice(orderItemPojo.getSellingPricePerUnit());
+        return orderItemData;
+    }
 
     private void fulfillOrder(long orderId) throws ApiException {
         List<OrderItemPojo> orderItemPojoList=orderItemService.getItemsByOrderId(orderId);

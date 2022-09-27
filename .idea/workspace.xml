@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="order api tested">
+    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="invoice generation successful throw self mode">
       <change afterPath="$PROJECT_DIR$/assure/src/main/resources/com.increff.assure/invoice.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/assure/src/main/resources/invoice/Invoice18.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -240,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664268422745</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="invoice generation successful throw self mode">
+      <created>1664272510399</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1664272510399</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -264,7 +271,8 @@
     <MESSAGE value="order can be placed though channel now" />
     <MESSAGE value="UI added" />
     <MESSAGE value="order api tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="order api tested" />
+    <MESSAGE value="invoice generation successful throw self mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="invoice generation successful throw self mode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

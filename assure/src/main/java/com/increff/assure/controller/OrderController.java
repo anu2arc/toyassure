@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.util.List;
 
 @Api
@@ -38,7 +40,7 @@ public class OrderController {
     }
     @ApiOperation("generate invoice")
     @RequestMapping(value = "/invoice/{orderId}",method = RequestMethod.POST)
-    public void generateInvoice(@PathVariable long orderId) throws ApiException {
+    public void generateInvoice(@PathVariable long orderId) throws ApiException, IOException, TransformerException {
         orderDto.generateInvoice(orderId);
     }
 
