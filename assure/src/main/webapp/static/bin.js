@@ -3,6 +3,18 @@ function getBaseUrl() {
     return baseUrl + "/api/bin";
 }
 
+function toJson($form) {
+	var serialized = $form.serializeArray();
+	console.log(serialized);
+	var s = '';
+	var data = {};
+	for (s in serialized) {
+		data[serialized[s]['name']] = serialized[s]['value']
+	}
+	var json = JSON.stringify(data);
+	return json;
+}
+
 function createBins() {
     var url = getBaseUrl() + '?noOfBin=' + document.getElementById('noOfBins').value;
     json = "";
