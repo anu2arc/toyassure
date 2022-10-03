@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="invoice generation successful throw self mode">
-      <change afterPath="$PROJECT_DIR$/assure/src/main/resources/com.increff.assure/invoice.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assure/src/main/resources/invoice/Invoice18.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/UIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/DtoHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/DtoHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/OrderDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/OrderItemData.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/OrderItemData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/party.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/party.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/OrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/OrderData.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/OrderData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "/home/anurag/Desktop/project/toyassure/assure/src/main/resources/com.increff.assure",
+    "last_opened_file_path": "/home/anurag/Desktop/project/toyassure/assure/src/main/webapp/html",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -71,10 +75,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assure/src/main/webapp/html" />
       <recent name="$PROJECT_DIR$/assure/src/main/resources/com.increff.assure" />
       <recent name="$PROJECT_DIR$/assure" />
       <recent name="$PROJECT_DIR$/commons" />
-      <recent name="$PROJECT_DIR$/assure/src/main/webapp/html" />
       <recent name="$PROJECT_DIR$/assure/src/main/webapp/static" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -247,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664272510399</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="invoice generation successful throw self mode">
+      <created>1664272922266</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1664272922266</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -277,16 +288,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dao/OrderDao.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dao/OrderDao.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderItemService.java</url>
           <line>49</line>

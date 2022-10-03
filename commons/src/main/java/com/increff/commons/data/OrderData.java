@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrderData {
+    private Long id;
     private Long clientId;
     private Long customerId;
     private Long channelId;

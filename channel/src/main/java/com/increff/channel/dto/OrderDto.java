@@ -14,4 +14,6 @@ public class OrderDto {
         return assureClient.post("/order/channel",channelOrderUploadForm);
     }
 
+    public void generateInvoice() {
+    }
 }

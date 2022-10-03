@@ -151,7 +151,7 @@ public class OrderDto {
 
     private Double getTotalAmount(Long id) throws ApiException {
         List<OrderItemPojo> orderItemPojoList=orderItemService.getItemsByOrderId(id);
-        Double total=0.0;
+        double total=0.0;
         for(OrderItemPojo orderItemPojo:orderItemPojoList){
             total+=orderItemPojo.getOrderedQuantity()*orderItemPojo.getSellingPricePerUnit();
         }

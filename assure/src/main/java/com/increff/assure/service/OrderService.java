@@ -49,7 +49,7 @@ public class OrderService {
         String xml = javaObjectToXml(invoiceData);
         File xsltFile = new File("src", "main/resources/com.increff.assure/invoice.xml");
         File pdfFile = new File("src", invoice);
-        convertToPDF(invoiceData, xsltFile, pdfFile, xml);
+        convertToPDF(xsltFile, pdfFile, xml);
     }
 
     private static String javaObjectToXml(InvoiceData invoiceData) {
@@ -66,7 +66,7 @@ public class OrderService {
         }
         return "";
     }
-    private void convertToPDF(InvoiceData invoiceData, File xslt, File pdf, String xml)
+    private void convertToPDF(File xslt, File pdf, String xml)
             throws IOException, TransformerException {
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
         OutputStream out = Files.newOutputStream(pdf.toPath());

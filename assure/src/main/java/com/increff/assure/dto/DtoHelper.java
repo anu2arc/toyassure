@@ -221,6 +221,7 @@ public class DtoHelper {
 
     public static OrderData convertOrderPojoToOrderData(OrderPojo orderPojo) {
         OrderData orderData=new OrderData();
+        orderData.setId(orderPojo.getId());
         orderData.setClientId(orderPojo.getClientId());
         orderData.setCustomerId(orderPojo.getCustomerId());
         orderData.setChannelId(orderPojo.getChannelId());

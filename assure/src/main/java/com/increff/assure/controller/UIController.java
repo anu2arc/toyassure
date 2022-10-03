@@ -12,10 +12,10 @@ public class UIController {
 	@Value("${app.baseUrl}")
 	private String baseUrl;
 
-	@RequestMapping(value = "")
-	public String index() {
-		return "index.html";
-	}
+//	@RequestMapping(value = "")
+//	public String index() {
+//		return "index.html";
+//	}
 
 	@RequestMapping(value = "/ui/home")
 	public ModelAndView home() {

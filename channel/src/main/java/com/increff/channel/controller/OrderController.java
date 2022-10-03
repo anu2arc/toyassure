@@ -22,4 +22,10 @@ public class OrderController {
     public void add(@RequestBody ChannelOrderUploadForm orderUploadForm) throws Exception {
         orderDto.add(orderUploadForm);
     }
+
+    @ApiOperation("generate invoice")
+    @RequestMapping(value = "",method = RequestMethod.GET)
+    public void generateInvoice(){
+        orderDto.generateInvoice();
+    }
 }
