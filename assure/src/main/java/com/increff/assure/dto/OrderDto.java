@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.increff.assure.Util.OrderUtil.validate;
+import static com.increff.assure.dto.DtoHelper.convertOrderItemPojoToOrderItemDataList;
 import static com.increff.assure.dto.DtoHelper.convertOrderPojoToOrderDataList;
 
 @Service
@@ -124,7 +125,7 @@ public class OrderDto {
     }
 
     @Transactional(rollbackOn = ApiException.class)
-    public void generateInvoice(long orderId) throws ApiException, IOException, TransformerException {
+    public String generateInvoice(long orderId) throws ApiException, IOException, TransformerException {
         OrderPojo orderPojo=orderService.getOrder(orderId);
         if(Objects.equals(orderPojo.getStatus(),OrderStatus.CREATED))
             throw new ApiException("order not yet allocated");
@@ -135,18 +136,19 @@ public class OrderDto {
         if(Objects.equals(orderService.getOrder(orderId).getStatus(),OrderStatus.FULFILLED)){
             ChannelPojo channelPojo= channelService.get(orderPojo.getChannelId());
             if(Objects.equals(channelPojo.getInvoiceType(),InvoiceType.SELF))
-                generatePdf(orderPojo);
+                return generatePdf(orderPojo);
                 //todo call channel Api to generate invoice
         }
+        return "";
     }
 
-    private void generatePdf(OrderPojo orderPojo) throws ApiException, IOException, TransformerException {
+    private String generatePdf(OrderPojo orderPojo) throws ApiException, IOException, TransformerException {
         String channelName=channelService.get(orderPojo.getChannelId()).getName();
         String customerName=clientService.get(orderPojo.getCustomerId()).getName();
         List<OrderItemData> orderItemDataList=convertOrderItemPojoToOrderItemDataList(orderItemService.getItemsByOrderId(orderPojo.getId()));
         Double total=getTotalAmount(orderPojo.getId());
         InvoiceData invoiceData=new InvoiceData(orderItemDataList,total,channelName,customerName);
-        orderService.generateInvoice(invoiceData,orderPojo.getId());
+        return orderService.generateInvoice(invoiceData,orderPojo.getId());
     }
 
     private Double getTotalAmount(Long id) throws ApiException {
@@ -156,22 +158,6 @@ public class OrderDto {
             total+=orderItemPojo.getOrderedQuantity()*orderItemPojo.getSellingPricePerUnit();
         }
         return total;
-    }
-
-    public static List<OrderItemData> convertOrderItemPojoToOrderItemDataList(List<OrderItemPojo> orderItemPojoList) {
-        List<OrderItemData> orderItemDataList=new ArrayList<>();
-        for(OrderItemPojo orderItemPojo:orderItemPojoList){
-            orderItemDataList.add(convertOrderItemPojoToOrderItemData(orderItemPojo));
-        }
-        return orderItemDataList;
-    }
-
-    public static OrderItemData convertOrderItemPojoToOrderItemData(OrderItemPojo orderItemPojo) {
-        OrderItemData orderItemData=new OrderItemData();
-        orderItemData.setGlobalSkuId(orderItemPojo.getGlobalSkuId());
-        orderItemData.setQuantity(orderItemPojo.getOrderedQuantity());
-        orderItemData.setSellingPrice(orderItemPojo.getSellingPricePerUnit());
-        return orderItemData;
     }
 
     private void fulfillOrder(long orderId) throws ApiException {

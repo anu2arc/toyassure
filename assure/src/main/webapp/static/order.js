@@ -5,7 +5,7 @@ function getBaseUrl() {
 
 function toJson($form) {
 	var serialized = $form.serializeArray();
-	console.log(serialized);
+	// console.log(serialized);
 	var s = '';
 	var data = {};
 	for (s in serialized) {
@@ -36,13 +36,14 @@ function setBinData(orderData) {
 	var $tbody = $('#order-table').find('tbody');
 	$tbody.empty();
 	var button = 'type="button"';
+	// var aloocatebutton=
 	for (var index in orderData) {
 		var color = 'class="btn btn-info"';
 		var message = "Allocate"
 		var data = orderData[index];
-		console.log(data.status, data.status == 'CREATED');
-		if (data.status == 'FULFILLED') { color = 'class="btn btn-success"'; message = "Invoice" }
-		var buttonHtml = ' <button ' + button + color + ' onclick="editBinSku(' + data.id + ')">' + message + '</button>';
+		// console.log(data.status, data.status == 'CREATED');
+		if (data.status != 'CREATED') { color = 'class="btn btn-success"'; message = "Invoice" }
+		var buttonHtml = ' <button id="' + data.id + '"' + button + color + ' onclick="triggerrr(' + data.id + ')">' + message + '</button>';
 		var row = '<tr>'
 			+ '<td>' + data.id + '</td>'
 			+ '<td>' + data.clientId + '</td>'
@@ -54,6 +55,60 @@ function setBinData(orderData) {
 			+ '</tr>';
 		$tbody.append(row);
 	}
+}
+
+function triggerrr(id) {
+	var val = document.getElementById(id).innerHTML;
+	if (val == 'Invoice') {
+		getInvoice(id);
+	}
+	else {
+		allocate(id);
+	}
+}
+
+function getInvoice(id) {
+	var url = getBaseUrl() + "/invoice/" + id;
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: '',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		success: function (response) {
+			$('.notifyjs-corner').empty();
+			$.notify("Invoice generated", "success");
+			window.open('file:///home/anurag/Desktop/project/toyassure/assure/src/main/resources/invoice/Invoice' + id + '.pdf', '_blank');
+		},
+		error: function (response) {
+			$('.notifyjs-corner').empty();
+			$.notify("Error please download error report", { autoHide: false });
+		}
+	});
+
+}
+
+function allocate(id) {
+	console.log(id);
+	var url = getBaseUrl() + "/allocate/" + id;
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: '',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		success: function (response) {
+			$('.notifyjs-corner').empty();
+			$.notify("Invoice generated", "success");
+			fetchAllOrders();
+		},
+		error: function (response) {
+			$('.notifyjs-corner').empty();
+			$.notify("could not allocate internal error", { autoHide: false });
+		}
+	});
 }
 
 function showPlaceOrderModel() {

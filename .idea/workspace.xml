@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="invoice generation successful throw self mode">
+    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="place order made">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/UIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/DtoHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/DtoHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/OrderDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/party.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/party.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/resources/invoice/Invoice18.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/resources/invoice/Invoice18.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/OrderDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/OrderData.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/OrderData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,20 +55,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "/home/anurag/Desktop/project/toyassure/assure/src/main/webapp/html",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/anurag/Desktop/project/toyassure/assure/src/main/webapp/html&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assure/src/main/webapp/html" />
@@ -258,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664272922266</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="place order made">
+      <created>1664794633496</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1664794633496</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -283,7 +286,8 @@
     <MESSAGE value="UI added" />
     <MESSAGE value="order api tested" />
     <MESSAGE value="invoice generation successful throw self mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="invoice generation successful throw self mode" />
+    <MESSAGE value="place order made" />
+    <option name="LAST_COMMIT_MESSAGE" value="place order made" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -4,6 +4,7 @@ import com.increff.assure.model.data.*;
 import com.increff.assure.model.forms.*;
 import com.increff.assure.pojo.*;
 import com.increff.commons.data.OrderData;
+import com.increff.commons.data.OrderItemData;
 import com.increff.commons.enums.ClientType;
 import com.increff.commons.enums.InvoiceType;
 import com.increff.commons.enums.OrderStatus;
@@ -228,5 +229,21 @@ public class DtoHelper {
         orderData.setChannelOrderId(orderPojo.getChannelOrderId());
         orderData.setStatus(orderPojo.getStatus());
         return orderData;
+    }
+
+    public static List<OrderItemData> convertOrderItemPojoToOrderItemDataList(List<OrderItemPojo> orderItemPojoList) {
+        List<OrderItemData> orderItemDataList=new ArrayList<>();
+        for(OrderItemPojo orderItemPojo:orderItemPojoList){
+            orderItemDataList.add(convertOrderItemPojoToOrderItemData(orderItemPojo));
+        }
+        return orderItemDataList;
+    }
+
+    public static OrderItemData convertOrderItemPojoToOrderItemData(OrderItemPojo orderItemPojo) {
+        OrderItemData orderItemData=new OrderItemData();
+        orderItemData.setGlobalSkuId(orderItemPojo.getGlobalSkuId());
+        orderItemData.setQuantity(orderItemPojo.getOrderedQuantity());
+        orderItemData.setSellingPrice(orderItemPojo.getSellingPricePerUnit());
+        return orderItemData;
     }
 }

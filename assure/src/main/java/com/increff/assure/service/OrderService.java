@@ -44,12 +44,20 @@ public class OrderService {
         return orderDao.getAll();
     }
 
-    public void generateInvoice(InvoiceData invoiceData,long orderId) throws IOException, TransformerException {
+    public String generateInvoice(InvoiceData invoiceData, long orderId) throws IOException, TransformerException, ApiException {
         String invoice="main/resources/invoice/Invoice"+orderId+".pdf";
         String xml = javaObjectToXml(invoiceData);
         File xsltFile = new File("src", "main/resources/com.increff.assure/invoice.xml");
         File pdfFile = new File("src", invoice);
         convertToPDF(xsltFile, pdfFile, xml);
+        File pdf=new File(invoice);
+//        try {
+//            return Files.readAllBytes(Paths.get("Invoice" + orderId + ".pdf"));
+//        }
+//        catch (Exception e){
+//            throw new ApiException("error in conversion to bytes");
+//        }
+        return pdf.toPath().toAbsolutePath().toString();
     }
 
     private static String javaObjectToXml(InvoiceData invoiceData) {

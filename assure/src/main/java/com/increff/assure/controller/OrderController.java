@@ -34,14 +34,14 @@ public class OrderController {
     }
 
     @ApiOperation("allocate order")
-    @RequestMapping(value = "/allocate",method = RequestMethod.POST)
-    public void allocate(@RequestParam long orderId) throws ApiException {
+    @RequestMapping(value = "/allocate/{orderId}",method = RequestMethod.POST)
+    public void allocate(@PathVariable long orderId) throws ApiException {
         orderDto.allocate(orderId);
     }
     @ApiOperation("generate invoice")
     @RequestMapping(value = "/invoice/{orderId}",method = RequestMethod.POST)
-    public void generateInvoice(@PathVariable long orderId) throws ApiException, IOException, TransformerException {
-        orderDto.generateInvoice(orderId);
+    public String generateInvoice(@PathVariable long orderId) throws ApiException, IOException, TransformerException {
+        return orderDto.generateInvoice(orderId);
     }
 
     @ApiOperation("place order thorough channel")
