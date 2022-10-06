@@ -1,4 +1,4 @@
-package com.increff.channel.dto;
+package com.increff.channel.client;
 
 import com.increff.commons.requests.Requests;
 import org.springframework.stereotype.Service;

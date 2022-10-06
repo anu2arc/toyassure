@@ -45,7 +45,7 @@ public class OrderService {
     }
 
     public String generateInvoice(InvoiceData invoiceData, long orderId) throws IOException, TransformerException, ApiException {
-        String invoice="main/resources/invoice/Invoice"+orderId+".pdf";
+        String invoice="main/webapp/invoice/Invoice"+orderId+".pdf";
         String xml = javaObjectToXml(invoiceData);
         File xsltFile = new File("src", "main/resources/com.increff.assure/invoice.xml");
         File pdfFile = new File("src", invoice);
@@ -57,7 +57,7 @@ public class OrderService {
 //        catch (Exception e){
 //            throw new ApiException("error in conversion to bytes");
 //        }
-        return pdf.toPath().toAbsolutePath().toString();
+        return "http://localhost:9000/toyassure/invoice/Invoice"+orderId+".pdf";
     }
 
     private static String javaObjectToXml(InvoiceData invoiceData) {

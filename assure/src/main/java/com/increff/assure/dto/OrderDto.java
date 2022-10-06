@@ -135,9 +135,8 @@ public class OrderDto {
         }
         if(Objects.equals(orderService.getOrder(orderId).getStatus(),OrderStatus.FULFILLED)){
             ChannelPojo channelPojo= channelService.get(orderPojo.getChannelId());
-            if(Objects.equals(channelPojo.getInvoiceType(),InvoiceType.SELF))
+//            if(Objects.equals(channelPojo.getInvoiceType(),InvoiceType.SELF))
                 return generatePdf(orderPojo);
-                //todo call channel Api to generate invoice
         }
         return "";
     }
@@ -148,7 +147,10 @@ public class OrderDto {
         List<OrderItemData> orderItemDataList=convertOrderItemPojoToOrderItemDataList(orderItemService.getItemsByOrderId(orderPojo.getId()));
         Double total=getTotalAmount(orderPojo.getId());
         InvoiceData invoiceData=new InvoiceData(orderItemDataList,total,channelName,customerName);
-        return orderService.generateInvoice(invoiceData,orderPojo.getId());
+        if(Objects.equals(channelService.get(orderPojo.getChannelId()).getInvoiceType(),InvoiceType.SELF))
+            return orderService.generateInvoice(invoiceData,orderPojo.getId());
+//        else
+        return ""; //todo call channel Api
     }
 
     private Double getTotalAmount(Long id) throws ApiException {

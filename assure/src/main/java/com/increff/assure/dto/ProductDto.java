@@ -47,6 +47,7 @@ public class ProductDto {
         if(!error.toString().isEmpty())
             throw new ApiException(error.toString());
         productService.add(productPojoList);
+        skuIdSet.clear();
     }
     private void duplicateCheck(String clientSkuId,Long clientId) throws ApiException {
         if(skuIdSet.contains(clientSkuId))

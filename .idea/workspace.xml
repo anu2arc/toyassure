@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="place order made">
+      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/client/ChannelClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/UIController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/model/data/InfoData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/resources/com.increff.channel/invoice.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/DtoHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/DtoHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/OrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/ProductDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/resources/invoice/Invoice18.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/resources/invoice/Invoice18.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/resources/invoice/Invoice18.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/invoice/Invoice28.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/AssureClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/client/AssureClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/OrderDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,34 +61,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/anurag/Desktop/project/toyassure/assure/src/main/webapp/html&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "/home/anurag/Desktop/project/toyassure/channel/src/main/java/webapp/html",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assure/src/main/webapp/html" />
+      <recent name="$PROJECT_DIR$/channel/src/main/java/webapp/html" />
+      <recent name="$PROJECT_DIR$/assure/src/main/webapp/invoice" />
+      <recent name="$PROJECT_DIR$/channel/src/main/resources/com.increff.channel" />
       <recent name="$PROJECT_DIR$/assure/src/main/resources/com.increff.assure" />
-      <recent name="$PROJECT_DIR$/assure" />
-      <recent name="$PROJECT_DIR$/commons" />
-      <recent name="$PROJECT_DIR$/assure/src/main/webapp/static" />
+      <recent name="$PROJECT_DIR$/assure/src/main/webapp/html" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/commons/src/main/resources/com.increff.commons" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.increff.channel.model.data" />
+      <recent name="com.increff.channel.controller" />
       <recent name="com.increff.controller" />
       <recent name="com.increff.spring" />
       <recent name="com.increff.model.Data" />
-      <recent name="com.increff.service" />
-      <recent name="model" />
     </key>
   </component>
   <component name="RunManager" selected="Maven.assure[jetty:run]">
@@ -261,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664794633496</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="place order made">
+      <created>1664879372764</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1664879372764</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
