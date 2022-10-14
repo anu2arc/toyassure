@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Setter
 public class OrderItemPojo extends AbstractPojo {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long orderId;
     private Long globalSkuId;

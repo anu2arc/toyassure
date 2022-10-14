@@ -1,13 +1,13 @@
 package com.increff.channel.dto;
 
 import com.increff.channel.client.AssureClient;
+import com.increff.channel.spring.ApiException;
 import com.increff.commons.data.InvoiceData;
 import com.increff.commons.data.OrderData;
-import com.increff.commons.form.ChannelOrderUploadForm;
+import com.increff.commons.form.OrderForm;
 import org.apache.fop.apps.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.client.RestTemplate;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -24,16 +24,14 @@ public class OrderDto {
 
     @Autowired
     private AssureClient assureClient;
-
     private final FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
 
-    public String add(ChannelOrderUploadForm channelOrderUploadForm) throws Exception {
-        return assureClient.post("/order/channel",channelOrderUploadForm);
+    public void add(OrderForm channelOrderUploadForm) throws Exception {
+        assureClient.placeOrder(channelOrderUploadForm);
     }
 
-    public List<OrderData> getAll() {
-        //todo call assure api to fetch all
-        return null;
+    public List<OrderData> getAll() throws ApiException {
+        return assureClient.fetchAllOrder();
     }
 
     public String generateInvoice(InvoiceData invoiceData) throws IOException, TransformerException {
@@ -43,7 +41,7 @@ public class OrderDto {
         File pdfFile = new File("src", invoice);
         convertToPDF(xsltFile, pdfFile, xml);
         File pdf=new File(invoice);
-        return "http://localhost:9000/toyassure/invoice/Invoice.pdf";
+        return "http://localhost:9001/channel/invoice/Invoice.pdf";
     }
     private static String javaObjectToXml(InvoiceData invoiceData) {
         try {

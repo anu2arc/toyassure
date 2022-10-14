@@ -8,8 +8,8 @@ import com.increff.commons.data.OrderItemData;
 import com.increff.commons.enums.ClientType;
 import com.increff.commons.enums.InvoiceType;
 import com.increff.commons.enums.OrderStatus;
-import com.increff.commons.form.ChannelOrderForm;
-import com.increff.commons.form.ChannelOrderUploadForm;
+import com.increff.commons.form.ItemList;
+import com.increff.commons.form.OrderForm;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -19,23 +19,24 @@ import static com.increff.commons.enums.OrderStatus.CREATED;
 
 @Repository
 public class DtoHelper {
-    public static ClientData convertClientPojoToClientData(ClientPojo userPojo){
-        ClientData clientData =new ClientData();
-        clientData.setName(userPojo.getName());
-        clientData.setType(userPojo.getClientType());
-        return clientData;
+    public static UserData convertClientPojoToClientData(UserPojo userPojo){
+        UserData userData =new UserData();
+        userData.setId(userPojo.getId());
+        userData.setName(userPojo.getName());
+        userData.setType(userPojo.getClientType());
+        return userData;
     }
-    public static List<ClientData> convertClientPojoToClientDataList(List<ClientPojo> userPojoList) {
-        List<ClientData> clientData =new ArrayList<>();
-        for(ClientPojo userPojo:userPojoList) {
-            clientData.add(convertClientPojoToClientData(userPojo));
+    public static List<UserData> convertClientPojoToClientDataList(List<UserPojo> userPojoList) {
+        List<UserData> userData =new ArrayList<>();
+        for(UserPojo userPojo:userPojoList) {
+            userData.add(convertClientPojoToClientData(userPojo));
         }
-        return clientData;
+        return userData;
     }
-    public static ClientPojo convertClientFormToPojo(ClientForm clientForm){
-        ClientPojo userPojo=new ClientPojo();
-        userPojo.setClientType(ClientType.valueOf(clientForm.getClientType()));
-        userPojo.setName(clientForm.getName());
+    public static UserPojo convertClientFormToPojo(UserForm userForm){
+        UserPojo userPojo=new UserPojo();
+        userPojo.setClientType(ClientType.valueOf(userForm.getClientType()));
+        userPojo.setName(userForm.getName());
         return userPojo;
     }
     public static ProductData convertProductPojoToProductData(ProductPojo productPojo){
@@ -142,22 +143,31 @@ public class DtoHelper {
         channelListingPojo.setGlobalSkuId(globalSkuId);
         return channelListingPojo;
     }
-    public static List<ChannelListingData> convertListingPojoToListingData(List<ChannelListingPojo> channelListingPojoList){
-        List<ChannelListingData> channelListingData=new ArrayList<>();
-        for(ChannelListingPojo channelListingPojo:channelListingPojoList){
-            channelListingData.add(create(channelListingPojo));
-        }
-        return channelListingData;
-    }
-    private static ChannelListingData create(ChannelListingPojo channelListingPojo){
-        ChannelListingData channelListingData=new ChannelListingData();
-        channelListingData.setChannelId(channelListingPojo.getChannelId());
+//    public static List<ChannelListingData> convertListingPojoToListingData(List<ChannelListingPojo> channelListingPojoList){
+//        List<ChannelListingData> channelListingData=new ArrayList<>();
+//        for(ChannelListingPojo channelListingPojo:channelListingPojoList){
+//            channelListingData.add(create(channelListingPojo));
+//        }
+//        return channelListingData;
+//    }
+//    private static ChannelListingData create(ChannelListingPojo channelListingPojo){
+//        ChannelListingData channelListingData=new ChannelListingData();
+//        channelListingData.setChannelName(channelListingPojo.getChannelId());
+//        channelListingData.setChannelSkuId(channelListingPojo.getChannelSkuId());
+//        channelListingData.setClient(channelListingPojo.getClientId());
+//        channelListingData.setGlobalSkuId(channelListingPojo.getGlobalSkuId());
+//        return channelListingData;
+//    }
+
+    public static ChannelListingData convertListingPojoToListingData(ChannelListingPojo channelListingPojo, String channelName, String clientName,String clientSkuId) {
+        ChannelListingData channelListingData = new ChannelListingData();
+        channelListingData.setChannelName(channelName);
         channelListingData.setChannelSkuId(channelListingPojo.getChannelSkuId());
-        channelListingData.setClientId(channelListingPojo.getClientId());
-        channelListingData.setGlobalSkuId(channelListingPojo.getGlobalSkuId());
+        channelListingData.setClientName(clientName);
+        channelListingData.setClientSkuId(clientSkuId);
         return channelListingData;
     }
-    public static OrderPojo convertToOrderPOJO(OrderForm orderForm, long clientId, long customerId, long channelId){
+    public static OrderPojo convertToOrderPOJO(com.increff.assure.model.forms.OrderForm orderForm, long clientId, long customerId, long channelId){
         OrderPojo orderPojo=new OrderPojo();
         orderPojo.setClientId(clientId);
         orderPojo.setCustomerId(customerId);
@@ -178,7 +188,7 @@ public class DtoHelper {
         return orderItemPojo;
     }
 
-    public static OrderPojo convertOrderFormToOrderPojo(ChannelOrderUploadForm orderUploadForm, long channelId){
+    public static OrderPojo convertOrderFormToOrderPojo(OrderForm orderUploadForm, long channelId){
         OrderPojo orderPojo=new OrderPojo();
         orderPojo.setClientId(orderUploadForm.getClientId());
         orderPojo.setCustomerId(orderUploadForm.getCustomerId());
@@ -187,14 +197,14 @@ public class DtoHelper {
         orderPojo.setStatus(OrderStatus.CREATED);
         return orderPojo;
     }
-    public static OrderItemPojo convertOrderFormToOrderItemPojo(long orderId, ChannelOrderForm orderForm, long globalSkuID) {
+    public static OrderItemPojo convertOrderFormToOrderItemPojo(long orderId, ItemList itemList, long globalSkuID) {
         OrderItemPojo orderItemPojo=new OrderItemPojo();
         orderItemPojo.setOrderId(orderId);
         orderItemPojo.setGlobalSkuId(globalSkuID);
-        orderItemPojo.setOrderedQuantity(orderForm.getQuantity());
+        orderItemPojo.setOrderedQuantity(itemList.getQuantity());
         orderItemPojo.setAllocatedQuantity(0L);
         orderItemPojo.setFulfilledQuantity(0L);
-        orderItemPojo.setSellingPricePerUnit(orderForm.getSellingPrice());
+        orderItemPojo.setSellingPricePerUnit(itemList.getSellingPrice());
         return orderItemPojo;
     }
 
@@ -212,20 +222,13 @@ public class DtoHelper {
         channelData.setName(channelPojo.getName());
         return channelData;
     }
-    public static List<OrderData> convertOrderPojoToOrderDataList(List<OrderPojo> orderPojoList) {
-        List<OrderData> orderDataList=new ArrayList<>();
-        for(OrderPojo orderPojo:orderPojoList){
-            orderDataList.add(convertOrderPojoToOrderData(orderPojo));
-        }
-        return orderDataList;
-    }
 
-    public static OrderData convertOrderPojoToOrderData(OrderPojo orderPojo) {
+    public static OrderData convertOrderPojoToOrderData(OrderPojo orderPojo, String clientName, String customerName, String channelName) {
         OrderData orderData=new OrderData();
         orderData.setId(orderPojo.getId());
-        orderData.setClientId(orderPojo.getClientId());
-        orderData.setCustomerId(orderPojo.getCustomerId());
-        orderData.setChannelId(orderPojo.getChannelId());
+        orderData.setClientName(clientName);
+        orderData.setCustomerName(customerName);
+        orderData.setChannelName(channelName);
         orderData.setChannelOrderId(orderPojo.getChannelOrderId());
         orderData.setStatus(orderPojo.getStatus());
         return orderData;

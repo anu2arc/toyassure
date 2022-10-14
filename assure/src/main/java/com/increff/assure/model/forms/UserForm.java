@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class ClientForm {
+public class UserForm {
     @NotNull
     private String name;
     @NotNull

@@ -13,18 +13,18 @@ public class UIController {
 	private String baseUrl;
 
 //	@RequestMapping(value = "")
-//	public String index() {
-//		return "index.html";
+//	public ModelAndView index() {
+//		return mav("user.html");
 //	}
 
-	@RequestMapping(value = "/ui/home")
+	@RequestMapping(value = "/ui")
 	public ModelAndView home() {
-		return mav("home.html");
+		return mav("user.html");
 	}
 
-	@RequestMapping(value = "/ui/party")
+	@RequestMapping(value = "/ui/user")
 	public ModelAndView brand() {
-		return mav("party.html");
+		return mav("user.html");
 	}
 
 	@RequestMapping(value = "/ui/product")

@@ -10,9 +10,7 @@ public class CustomPhysicalNamingStrategy implements PhysicalNamingStrategy {
 
     @Override
     public Identifier toPhysicalColumnName(final Identifier identifier, final JdbcEnvironment jdbcEnv) {
-        if(Objects.isNull(identifier))
-            return identifier;
-        return convertToSnakeCase(identifier);
+        return identifier;
     }
 
     @Override

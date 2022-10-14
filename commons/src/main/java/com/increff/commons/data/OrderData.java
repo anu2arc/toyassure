@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 public class OrderData {
     private Long id;
-    private Long clientId;
-    private Long customerId;
-    private Long channelId;
+    private String clientName;
+    private String customerName;
+    private String channelName;
     private String channelOrderId;
     private OrderStatus status;
 }

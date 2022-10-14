@@ -5,7 +5,7 @@ import com.increff.assure.model.forms.ProductForm;
 import com.increff.assure.model.forms.ProductUpdateForm;
 import com.increff.assure.pojo.ProductPojo;
 import com.increff.assure.service.ApiException;
-import com.increff.assure.service.ClientService;
+import com.increff.assure.service.UserService;
 import com.increff.assure.service.ProductService;
 import com.increff.commons.enums.ClientType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class ProductDto {
     @Autowired
     private ProductService productService;
     @Autowired
-    private ClientService clientService;
+    private UserService userService;
 
     private Set<String> skuIdSet =new HashSet<>();
     public List<ProductData> getAll() {
@@ -31,7 +31,7 @@ public class ProductDto {
     }
 
     public void add(long clientId, List<ProductForm> productFormList) throws ApiException {
-        clientService.checkIdAndType(clientId, ClientType.CLIENT);
+        userService.checkIdAndType(clientId, ClientType.CLIENT);
         List<ProductPojo> productPojoList=new ArrayList<>();
         StringBuilder error=new StringBuilder();
         for(ProductForm productForm:productFormList){
@@ -44,10 +44,10 @@ public class ProductDto {
                 error.append(exception.getMessage());
             }
         }
+        skuIdSet.clear();
         if(!error.toString().isEmpty())
             throw new ApiException(error.toString());
         productService.add(productPojoList);
-        skuIdSet.clear();
     }
     private void duplicateCheck(String clientSkuId,Long clientId) throws ApiException {
         if(skuIdSet.contains(clientSkuId))

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 public class ChannelPojo extends AbstractPojo{
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false,unique = true)
     private String name;

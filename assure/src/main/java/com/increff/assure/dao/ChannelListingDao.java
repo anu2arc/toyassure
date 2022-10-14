@@ -34,7 +34,7 @@ public class ChannelListingDao {
         TypedQuery<ChannelListingPojo> query=getQuery(SELECT_GSKU);
         query.setParameter("channelId",channelId);
         query.setParameter("channelSkuId",channelSkuId);
-        query.setParameter("clientId",channelId);
+        query.setParameter("clientId",clientId);
         return query.getResultList().stream().findFirst().orElse(null);
     }
 }

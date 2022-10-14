@@ -17,6 +17,7 @@ import static com.increff.assure.Util.ChannelListingUtil.normalize;
 import static com.increff.assure.Util.ChannelListingUtil.validate;
 import static com.increff.assure.dto.DtoHelper.convertListingFormToPojo;
 import static com.increff.assure.dto.DtoHelper.convertListingPojoToListingData;
+//import static com.increff.assure.dto.DtoHelper.convertListingPojoToListingData;
 
 @Service
 
@@ -24,7 +25,7 @@ public class ChannelListingDto {
     @Autowired
     private ChannelListingService channelListingService;
     @Autowired
-    private ClientService clientService;
+    private UserService userService;
     @Autowired
     private ChannelService channelService;
     @Autowired
@@ -32,7 +33,7 @@ public class ChannelListingDto {
 
     public void add(ChannelListingUploadForm channelListingUploadForm) throws ApiException {
         validate(channelListingUploadForm);
-        long clientId=clientService.getByName(channelListingUploadForm.getClientName(), ClientType.CLIENT ).getId();
+        long clientId=userService.getByName(channelListingUploadForm.getClientName(), ClientType.CLIENT ).getId();
         long channelId=channelService.getByName(channelListingUploadForm.getChannelName()).getId();
         List<ChannelListingPojo> channelListingPojos= getPojoList(channelListingUploadForm.getChannelList(),clientId,channelId);
         channelListingService.add(channelListingPojos);
@@ -41,19 +42,31 @@ public class ChannelListingDto {
         List<ChannelListingPojo> channelListingPojos=new ArrayList<>();
         StringBuilder error=new StringBuilder();
         for(ChannelListingForm channelListingForm: listingForms){
-            normalize(channelListingForm);
-            ProductPojo productPojo= productService.check(channelListingForm.getClientSkuId(), clientId);
-            if(productPojo==null)
-                error.append("Product doesn't exist for given client SKU ID");
-            else {
+            try{
+                validate(channelListingForm);
+                ProductPojo productPojo= productService.check(channelListingForm.getClientSkuId(), clientId);
+                if(productPojo==null)
+                    throw new ApiException("Product doesn't exist for given client SKU ID");
                 channelListingPojos.add(convertListingFormToPojo(channelId,channelListingForm.getChannelSkuId(),clientId,productPojo.getGlobalSkuId()));
+            } catch (ApiException exception){
+                error.append(exception.getMessage());
             }
         }
         if(!error.toString().isEmpty())
             throw new ApiException(error.toString());
         return channelListingPojos;
     }
-    public List<ChannelListingData> getAll() {
-        return convertListingPojoToListingData(channelListingService.getAll());
+    public List<ChannelListingData> getAll() throws ApiException {
+        List<ChannelListingPojo> channelListingPojos=channelListingService.getAll();
+        List<ChannelListingData> channelListingData=new ArrayList<>();
+        for(ChannelListingPojo channelListingPojo:channelListingPojos){
+            String channelName=channelService.get(channelListingPojo.getChannelId()).getName();
+            String clientName= userService.get(channelListingPojo.getClientId()).getName();
+            String clientSkuId= productService.get(channelListingPojo.getGlobalSkuId()).getClientSkuId();
+            channelListingData.add(convertListingPojoToListingData(channelListingPojo,channelName,clientName,clientSkuId));
+        }
+        return channelListingData;
     }
+
+
 }

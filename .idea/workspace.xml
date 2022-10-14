@@ -4,25 +4,92 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="place order made">
-      <change afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/client/ChannelClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/UIController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/model/data/InfoData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/channel/src/main/resources/com.increff.channel/invoice.xml" afterDir="false" />
+    <list default="true" id="07f407c8-480a-443d-a48b-1bc8fe01566e" name="Changes" comment="channel ui changes">
+      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/invoice/Invoice22.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/main/webapp/invoice/Invoice36.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/AbstractUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/QaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/controller/BinControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/controller/ChannelControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/controller/ChannelListingControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/controller/OrderControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/controller/ProductControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/controller/UserControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/java/com/increff/assure/controller/testUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assure/src/test/resources/test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/webapp/html/snippets.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel/src/main/webapp/invoice/Invoice.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/Util/ChannelListingUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/Util/ChannelListingUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/Util/ClientUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/Util/ClientUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/Util/OrderUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/Util/OrderUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/client/ChannelClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/client/ChannelClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/controller/UIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dao/ChannelListingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dao/ChannelListingDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dao/ClientDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dao/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/BinDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/BinDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/ChannelListingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/ChannelListingDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/ClientDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/DtoHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/DtoHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/OrderDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/dto/ProductDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assure/src/main/resources/invoice/Invoice18.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/invoice/Invoice28.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/model/data/ChannelListingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/model/data/ChannelListingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/model/data/ClientData.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/model/data/UserData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/model/forms/ClientForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/model/forms/UserForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/BinPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/BinPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/BinSkuPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/BinSkuPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/ChannelListingPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/ChannelListingPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/ChannelPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/ChannelPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/ClientPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/UserPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/InventoryPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/InventoryPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/OrderItemPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/OrderItemPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/OrderPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/OrderPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/ProductPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/pojo/ProductPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/BinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/BinService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/ChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/ChannelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/spring/CustomPhysicalNamingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/java/com/increff/assure/spring/CustomPhysicalNamingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/resources/com.increff.assure/invoice.xml" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/resources/com.increff.assure/invoice.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/bin.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/bin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/channel.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/channel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/channelListing.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/channelListing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/party.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/html/snippets.html" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/html/snippets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/invoice/Invoice28.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/invoice/Invoice28.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/static/channelListing.js" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/channelListing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/assure/src/main/webapp/static/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/Util/OrderUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/Util/OrderUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/client/AssureClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/client/AssureClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/AssureClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/client/AssureClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/java/com/increff/channel/dto/OrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/webapp/html/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/webapp/static/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/webapp/static/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/webapp/static/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/webapp/static/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/webapp/static/logo1.png" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/webapp/static/logo1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/webapp/static/notify.js" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/webapp/static/notify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/webapp/static/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/java/webapp/static/papaparse.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/webapp/static/papaparse.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel/src/main/resources/com.increff.channel/invoice.xml" beforeDir="false" afterPath="$PROJECT_DIR$/channel/src/main/resources/com.increff.channel/invoice.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/InvoiceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/InvoiceData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/OrderData.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/data/OrderData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/enums/ClientType.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/enums/ClientType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/form/ChannelOrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/form/ItemList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/form/ChannelOrderUploadForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/increff/commons/form/OrderForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -68,7 +135,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "/home/anurag/Desktop/project/toyassure/channel/src/main/java/webapp/html",
+    "last_opened_file_path": "/home/anurag/Desktop/project/toyassure/assure/src/test/resources",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -77,24 +144,102 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assure/src/test/resources" />
+      <recent name="$PROJECT_DIR$/assure/src/test/resources/com.increff.assure" />
+      <recent name="$PROJECT_DIR$/channel/src/main/webapp/html" />
+      <recent name="$PROJECT_DIR$/channel/src/main/java/webapp/static" />
       <recent name="$PROJECT_DIR$/channel/src/main/java/webapp/html" />
-      <recent name="$PROJECT_DIR$/assure/src/main/webapp/invoice" />
-      <recent name="$PROJECT_DIR$/channel/src/main/resources/com.increff.channel" />
-      <recent name="$PROJECT_DIR$/assure/src/main/resources/com.increff.assure" />
-      <recent name="$PROJECT_DIR$/assure/src/main/webapp/html" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/channel/src/main" />
       <recent name="$PROJECT_DIR$/commons/src/main/resources/com.increff.commons" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.increff.assure" />
       <recent name="com.increff.channel.model.data" />
       <recent name="com.increff.channel.controller" />
       <recent name="com.increff.controller" />
       <recent name="com.increff.spring" />
-      <recent name="com.increff.model.Data" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.assure[jetty:run]">
+  <component name="RunManager" selected="JUnit.com.increff.assure in assure">
+    <configuration name="ChannelListingControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.increff.assure.controller.ChannelListingControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChannelListingControllerTest.testAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.increff.assure.controller.ChannelListingControllerTest" />
+      <option name="METHOD_NAME" value="testAdd" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChannelListingControllerTest.testGetAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.increff.assure.controller.ChannelListingControllerTest" />
+      <option name="METHOD_NAME" value="testGetAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest.testAddWithAlreadyExistingProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.increff.assure.controller.ProductControllerTest" />
+      <option name="METHOD_NAME" value="testAddWithAlreadyExistingProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.increff.assure in assure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="assure[jetty:run]" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -172,10 +317,24 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="JUnit.ChannelListingControllerTest" />
+      <item itemvalue="JUnit.ChannelListingControllerTest.testAdd" />
+      <item itemvalue="JUnit.ChannelListingControllerTest.testGetAll" />
+      <item itemvalue="JUnit.ProductControllerTest.testAddWithAlreadyExistingProduct" />
+      <item itemvalue="JUnit.com.increff.assure in assure" />
       <item itemvalue="Maven.toyassure [install]" />
       <item itemvalue="Maven.assure[jetty:run]" />
       <item itemvalue="Maven.channel [jetty:run]" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.com.increff.assure in assure" />
+        <item itemvalue="JUnit.ProductControllerTest.testAddWithAlreadyExistingProduct" />
+        <item itemvalue="JUnit.ChannelListingControllerTest.testGetAll" />
+        <item itemvalue="JUnit.ChannelListingControllerTest" />
+        <item itemvalue="JUnit.ChannelListingControllerTest.testAdd" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -277,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664879372764</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="channel ui changes">
+      <created>1665051024416</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1665051024416</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,7 +469,8 @@
     <MESSAGE value="order api tested" />
     <MESSAGE value="invoice generation successful throw self mode" />
     <MESSAGE value="place order made" />
-    <option name="LAST_COMMIT_MESSAGE" value="place order made" />
+    <MESSAGE value="channel ui changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="channel ui changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -315,5 +482,22 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/toyassure$com_increff_assure_controller_in_assure.ic" NAME="com.increff.assure.controller in assure Coverage Results" MODIFIED="1665648044773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/toyassure$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1665556064359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/toyassure$ProductControllerTest.ic" NAME="ProductControllerTest Coverage Results" MODIFIED="1665639927449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/toyassure$BinControllerTest.ic" NAME="BinControllerTest Coverage Results" MODIFIED="1665648003393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/toyassure$com_increff_assure_in_assure.ic" NAME="com.increff.assure in assure Coverage Results" MODIFIED="1665731747120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.*</FILTER>
+    </SUITE>
   </component>
 </project>

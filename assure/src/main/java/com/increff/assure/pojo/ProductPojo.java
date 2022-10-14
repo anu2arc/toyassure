@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"clientSkuId","clientId"})})
 public class ProductPojo extends AbstractPojo{
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long globalSkuId;
     @Column(nullable = false)
     private String clientSkuId;

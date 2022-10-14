@@ -14,19 +14,23 @@ import java.util.List;
 @XmlRootElement
 public class InvoiceData {
     private Double total;
+    private String time;
     private String invoiceTime;
+    private String clientName;
+    private String invoiceType;
     private String channelName;
     private String customerName;
     private List<OrderItemData> orderItems;
-
     public InvoiceData(){}
-
-    public InvoiceData(List<OrderItemData> orderItemDataList,Double total,String channelName,String customerName){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    public InvoiceData(List<OrderItemData> orderItemDataList,Double total,String channelName,String customerName,String invoiceType,String clientName,ZonedDateTime orderTime){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        this.time=dtf.format(orderTime);
         this.invoiceTime= dtf.format(ZonedDateTime.now());
         this.orderItems=orderItemDataList;
         this.total=total;
         this.channelName=channelName;
         this.customerName=customerName;
+        this.invoiceType=invoiceType;
+        this.clientName=clientName;
     }
 }

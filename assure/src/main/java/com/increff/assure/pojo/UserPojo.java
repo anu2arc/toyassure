@@ -10,9 +10,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"name","clientType"})})
-public class ClientPojo extends AbstractPojo {
+public class UserPojo extends AbstractPojo {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String name;

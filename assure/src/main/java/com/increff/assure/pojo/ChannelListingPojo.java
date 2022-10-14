@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"channelId","channelSkuId","clientId"})})
 public class ChannelListingPojo extends AbstractPojo{
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long channelId;
     private String channelSkuId;

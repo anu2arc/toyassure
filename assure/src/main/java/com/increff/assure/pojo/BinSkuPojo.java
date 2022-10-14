@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"binId","globalSkuId"})})
 public class BinSkuPojo extends AbstractPojo {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private Long binId;

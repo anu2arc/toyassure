@@ -2,10 +2,9 @@ package com.increff.assure.controller;
 
 
 import com.increff.assure.dto.OrderDto;
-import com.increff.assure.model.forms.OrderForm;
 import com.increff.assure.service.ApiException;
 import com.increff.commons.data.OrderData;
-import com.increff.commons.form.ChannelOrderUploadForm;
+import com.increff.commons.form.OrderForm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class OrderController {
     private OrderDto orderDto;
     @ApiOperation("place order")
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public void add(@RequestBody OrderForm orderForm) throws ApiException {
+    public void add(@RequestBody com.increff.assure.model.forms.OrderForm orderForm) throws ApiException {
         orderDto.add(orderForm);
     }
 
@@ -46,7 +45,7 @@ public class OrderController {
 
     @ApiOperation("place order thorough channel")
     @RequestMapping(value = "/channel",method = RequestMethod.POST)
-    public String channelOrder(@RequestBody ChannelOrderUploadForm channelOrderUploadForm) throws ApiException {
+    public String channelOrder(@RequestBody OrderForm channelOrderUploadForm) throws ApiException {
         return orderDto.addChannelOrder(channelOrderUploadForm);
     }
 }

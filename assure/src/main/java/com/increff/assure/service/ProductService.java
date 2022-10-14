@@ -33,6 +33,13 @@ public class ProductService {
     public ProductPojo check(String clientSkuId,long clientID) throws ApiException {
         return productDao.check(clientSkuId,clientID);
     }
+
+    public ProductPojo get(Long globalSkuId) throws ApiException {
+        ProductPojo productPojo=productDao.getGlobal(globalSkuId);
+        if(productPojo==null)
+            throw new ApiException("Product does not exist for given globalSkuId");
+        return productPojo;
+    }
     @Transactional(rollbackOn = ApiException.class)
     public void update(ProductPojo productPojo) throws ApiException {
         ProductPojo pojo=productDao.getGlobal(productPojo.getGlobalSkuId());

@@ -7,10 +7,10 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ChannelOrderUploadForm {
+public class OrderForm {
     private String channelName;
     private Long clientId;
     private Long customerId;
     private String channelOrderId;
-    private List<ChannelOrderForm> items;
+    private List<ItemList> items;
 }

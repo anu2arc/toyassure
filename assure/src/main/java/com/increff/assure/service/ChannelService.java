@@ -25,7 +25,7 @@ public class ChannelService {
     @Transactional(rollbackOn = ApiException.class)
     public void add(ChannelPojo channelPojo) throws ApiException {
         setInternal();
-        ChannelPojo pojo= channelDao.check(channelPojo.getName());
+        ChannelPojo pojo=channelDao.check(channelPojo.getName());
         if(pojo!=null) {
             throw new ApiException("Channel already exist");
         }

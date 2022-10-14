@@ -46,9 +46,9 @@ function setBinData(orderData) {
 		var buttonHtml = ' <button id="' + data.id + '"' + button + color + ' onclick="triggerrr(' + data.id + ')">' + message + '</button>';
 		var row = '<tr>'
 			+ '<td>' + data.id + '</td>'
-			+ '<td>' + data.clientId + '</td>'
-			+ '<td>' + data.customerId + '</td>'
-			+ '<td>' + data.channelId + '</td>'
+			+ '<td>' + data.clientName + '</td>'
+			+ '<td>' + data.customerName + '</td>'
+			+ '<td>' + data.channelName + '</td>'
 			+ '<td>' + data.channelOrderId + '</td>'
 			+ '<td>' + data.status + '</td>'
 			+ '<td>' + buttonHtml + '</td>'

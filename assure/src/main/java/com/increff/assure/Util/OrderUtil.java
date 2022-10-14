@@ -1,10 +1,9 @@
 package com.increff.assure.Util;
 
-import com.increff.assure.model.forms.OrderForm;
 import com.increff.assure.model.forms.OrderItemForm;
 import com.increff.assure.service.ApiException;
-import com.increff.commons.form.ChannelOrderForm;
-import com.increff.commons.form.ChannelOrderUploadForm;
+import com.increff.commons.form.ItemList;
+import com.increff.commons.form.OrderForm;
 import org.springframework.stereotype.Repository;
 
 import java.text.DecimalFormat;
@@ -28,7 +27,7 @@ public class OrderUtil {
         normalize(orderItemForm);
     }
 
-    public static void validate(OrderForm orderForm) throws ApiException {
+    public static void validate(com.increff.assure.model.forms.OrderForm orderForm) throws ApiException {
         if(Objects.isNull(orderForm.getClientName())||orderForm.getClientName().trim().equals(""))
             throw new ApiException("Client name cannot be null");
         if(Objects.isNull(orderForm.getCustomerName())||orderForm.getCustomerName().trim().equals(""))
@@ -44,13 +43,13 @@ public class OrderUtil {
         orderItemForm.setSellingPricePerUnit(Double.valueOf(DECIMAL_FORMAT.format(orderItemForm.getSellingPricePerUnit())));
     }
 
-    public static void normalize(OrderForm orderForm){
+    public static void normalize(com.increff.assure.model.forms.OrderForm orderForm){
         orderForm.setClientName(orderForm.getClientName().trim().toLowerCase());
         orderForm.setChannelOrderId(orderForm.getChannelOrderId().trim().toLowerCase());
         orderForm.setCustomerName(orderForm.getCustomerName().trim().toLowerCase());
     }
 
-    public static void validate(ChannelOrderUploadForm orderUploadForm) throws ApiException {
+    public static void validate(OrderForm orderUploadForm) throws ApiException {
         if(Objects.isNull(orderUploadForm.getChannelName()) || orderUploadForm.getChannelName().trim().equals(""))
             throw new ApiException("Channel name cannot be empty");
         if(Objects.isNull(orderUploadForm.getChannelOrderId()) || orderUploadForm.getChannelOrderId().trim().equals(""))
@@ -59,25 +58,25 @@ public class OrderUtil {
             throw new ApiException("No order item found");
         normalize(orderUploadForm);
     }
-    public static void validate(ChannelOrderForm orderForm) throws ApiException {
-        if(Objects.isNull(orderForm.getChannelSkuId()) || orderForm.getChannelSkuId().trim().equals(""))
+    public static void validate(ItemList itemList) throws ApiException {
+        if(Objects.isNull(itemList.getChannelSkuId()) || itemList.getChannelSkuId().trim().equals(""))
             throw new ApiException("Channel sku id cannot be empty");
-        if(orderForm.getQuantity()<0)
+        if(itemList.getQuantity()<0)
             throw new ApiException("Quantity cannot be negative");
-        if(orderForm.getQuantity()==0)
+        if(itemList.getQuantity()==0)
             throw new ApiException("Quantity cannot be zero");
-        if(orderForm.getSellingPrice()<0)
+        if(itemList.getSellingPrice()<0)
             throw new ApiException("selling price cannot be negative");
-        if(orderForm.getSellingPrice()==0)
+        if(itemList.getSellingPrice()==0)
             throw new ApiException("selling price cannot be zero");
 
     }
 
-    public static void normalize(ChannelOrderForm orderForm){
-        orderForm.setChannelSkuId(orderForm.getChannelSkuId().trim().toLowerCase());
-        orderForm.setSellingPrice(Double.valueOf(DECIMAL_FORMAT.format(orderForm.getSellingPrice())));
+    public static void normalize(ItemList itemList){
+        itemList.setChannelSkuId(itemList.getChannelSkuId().trim().toLowerCase());
+        itemList.setSellingPrice(Double.valueOf(DECIMAL_FORMAT.format(itemList.getSellingPrice())));
     }
-    public static void normalize(ChannelOrderUploadForm orderUploadForm) {
+    public static void normalize(OrderForm orderUploadForm) {
         orderUploadForm.setChannelName(orderUploadForm.getChannelName().trim().toLowerCase());
         orderUploadForm.setChannelOrderId(orderUploadForm.getChannelOrderId().trim().toLowerCase());
     }

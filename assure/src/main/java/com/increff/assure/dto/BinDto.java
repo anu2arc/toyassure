@@ -26,7 +26,7 @@ public class BinDto {
     @Autowired
     private ProductService productService;
     @Autowired
-    private ClientService clientService;
+    private UserService userService;
     public List<BinData> getAll() {
         return DtoHelper.convertBinPojoToBinDataList(binService.getAll());
     }
@@ -36,7 +36,7 @@ public class BinDto {
 
     @Transactional(rollbackOn = ApiException.class)
     public void add(List<BinSkuForm> binSkuForms,long clientId) throws ApiException {
-        clientService.checkIdAndType(clientId, ClientType.CLIENT);
+        userService.checkIdAndType(clientId, ClientType.CLIENT);
         List<BinSkuPojo> binSkuPojoList=getPojoList(binSkuForms,clientId);
         binService.add(binSkuPojoList);
         inventoryService.add(DtoHelper.convertBinPojoListToInventoryPojo(binSkuPojoList));
@@ -67,6 +67,7 @@ public class BinDto {
 
     @Transactional(rollbackOn = ApiException.class)
     public void update(long id, BinSkuUpdateForm binSkuUpdateForm) throws ApiException {
+        validate(binSkuUpdateForm);
         BinSkuPojo binSkuPojo=binService.get(id);
         inventoryService.update(binSkuPojo.getGlobalSkuId(),binSkuPojo.getQuantity(),binSkuUpdateForm.getQuantity());
         binService.update(id, binSkuUpdateForm.getQuantity());

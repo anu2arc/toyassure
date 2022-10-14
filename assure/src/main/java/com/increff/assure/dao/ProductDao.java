@@ -32,7 +32,7 @@ public class ProductDao {
         TypedQuery<ProductPojo> query=getQuery(SELECT_BY_CLIENT_SKU_ID_AND_ID);
         query.setParameter("clientSkuId",clientSkuId);
         query.setParameter("clientId",clientId);
-        return query.getResultList().stream().findFirst().orElse(null);//todo check get single method
+        return query.getResultList().stream().findFirst().orElse(null);
     }
 
     //todo remove

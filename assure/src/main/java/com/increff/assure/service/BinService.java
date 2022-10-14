@@ -55,7 +55,7 @@ public class BinService {
     public BinSkuPojo get(long id) throws ApiException {
         BinSkuPojo binSkuPojo=binSkuDao.get(id);
         if(binSkuPojo==null)
-            throw new ApiException("Bin does not exist for given Bin ID");
+            throw new ApiException("Bin does not exist for given ID");
         return binSkuPojo;
     }
 

@@ -35,11 +35,12 @@ function setChannel(ChannelData) {
     var $tbody = $('#brand-table').find('tbody');
     $tbody.empty();
     $.each(ChannelData, function (i, channel) {
+        console.log(channel);
         var $tr = $('<tr>');
-        $tr.append($('<td>').html(channel.channelId));
+        $tr.append($('<td>').html(channel.channelName));
         $tr.append($('<td>').html(channel.channelSkuId));
-        $tr.append($('<td>').html(channel.clientId));
-        $tr.append($('<td>').html(channel.globalSkuId));
+        $tr.append($('<td>').html(channel.clientName));
+        $tr.append($('<td>').html(channel.clientSkuId));
         // $tr.append($('<td>').html(user.));
         $tbody.append($tr);
         console.log($tr);

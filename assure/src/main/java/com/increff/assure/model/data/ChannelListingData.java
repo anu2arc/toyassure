@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ChannelListingData {
-    private Long channelId;
+    private String channelName;
     private String channelSkuId;
-    private Long clientId;
-    private Long globalSkuId;
+    private String clientName;
+    private String clientSkuId;
 }

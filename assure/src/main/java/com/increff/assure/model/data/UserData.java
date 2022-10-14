@@ -6,7 +6,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClientData {
+public class UserData {
+    private Long id;
     private String name;
     private ClientType type;
 }
